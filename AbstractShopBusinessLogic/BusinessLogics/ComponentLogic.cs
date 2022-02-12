@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AbstractShopContracts.BindingModels;
 using AbstractShopContracts.BusinessLogicsContracts;
-using AbstractShopContracts.StoragesContracts;
+using AbstractShopContracts.StoragesContacts;
 using AbstractShopContracts.ViewModels;
 
 
