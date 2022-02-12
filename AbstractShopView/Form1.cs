@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AbstractShopContracts.BusinessLogicsContracts;
-
-
 
 namespace AbstractShopView
 {
@@ -20,9 +17,5 @@ namespace AbstractShopView
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

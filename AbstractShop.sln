@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractShopBusinessLogic",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractShopListImplement", "AbstractShopListImplement\AbstractShopListImplement.csproj", "{F624ABD3-4CE3-46D6-9B49-6061A18F2B61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractShopView", "AbstractShopView\AbstractShopView.csproj", "{456F07D7-399C-47EF-A7FA-EDD59A99DE79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractShopView", "AbstractShopView\AbstractShopView.csproj", "{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{F624ABD3-4CE3-46D6-9B49-6061A18F2B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F624ABD3-4CE3-46D6-9B49-6061A18F2B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F624ABD3-4CE3-46D6-9B49-6061A18F2B61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{456F07D7-399C-47EF-A7FA-EDD59A99DE79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{456F07D7-399C-47EF-A7FA-EDD59A99DE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{456F07D7-399C-47EF-A7FA-EDD59A99DE79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{456F07D7-399C-47EF-A7FA-EDD59A99DE79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
