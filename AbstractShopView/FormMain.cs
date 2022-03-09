@@ -12,6 +12,7 @@ using AbstractShopContracts.BindingModels;
 using AbstractShopContracts.BusinessLogicsContracts;
 
 
+
 namespace AbstractShopView
 {
     public partial class FormMain : Form
@@ -33,24 +34,21 @@ namespace AbstractShopView
             try
             {
                 var list = _orderLogic.Read(null);
-                // прописать логику
+                if (list != null)
+                {
+
+                    dataGridView.DataSource = list;
+                    dataGridView.Columns[0].Visible = false;
+
+                    dataGridView.Columns[1].Visible = false;
+
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
             }
-        }
-
-        private void КомпонентыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = Program.Container.Resolve<FormComponents>();
-            form.ShowDialog();
-        }
-        private void ИзделияToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = Program.Container.Resolve<FormProducts>();
-            form.ShowDialog();
         }
 
         private void buttonCreateOrder_Click(object sender, EventArgs e)
@@ -127,6 +125,18 @@ namespace AbstractShopView
         private void buttonRef_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void КомпонентыToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormComponents>();
+            form.ShowDialog();
+        }
+
+        private void ИзделияToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormProducts>();
+            form.ShowDialog();
         }
     }
 }

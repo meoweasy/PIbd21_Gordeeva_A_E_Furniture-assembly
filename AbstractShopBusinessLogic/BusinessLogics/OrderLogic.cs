@@ -18,54 +18,110 @@ namespace AbstractShopBusinessLogic.BusinessLogics
         {
             _orderStorage = orderStorage;
         }
-
-        public List<OrderViewModel> Read(OrderBindingModel model)
+        public List<OrderViewModel> Read(OrderBindingModel sample)
         {
-            if (model == null)
+            if (sample == null)
             {
                 return _orderStorage.GetFullList();
             }
-            return _orderStorage.GetFilteredList(model);
+            if (sample.Id.HasValue)
+            {
+                return new List<OrderViewModel> { _orderStorage.GetElement(sample) };
+            }
+            return _orderStorage.GetFilteredList(sample);
         }
-
-        public void UpdateStatus(OrderBindingModel model)
-        {
-            var element = _orderStorage.GetElement(new OrderBindingModel
-            {
-                Id = model.Id
-            });
-
-            if (element.Id == model.Id && element.Status == "Принят")
-            {
-                model.Status = OrderStatus.Выполняется;
-            }
-
-            if (element.Id == model.Id && element.Status == "Выполняется")
-            {
-                model.Status = OrderStatus.Готов;
-            }
-
-            if (element.Id == model.Id && element.Status == "Готов")
-            {
-                model.Status = OrderStatus.Выдан;
-            }
-        }
-
         public void CreateOrder(CreateOrderBindingModel model)
         {
-            var element = _orderStorage.GetElement(new OrderBindingModel
+            _orderStorage.Insert(new OrderBindingModel
             {
+                ProductId = model.ProductId,
                 Count = model.Count,
-                Sum = model.Sum
+                Sum = model.Sum,
+                DateCreate = DateTime.Now,
+                Status = OrderStatus.Принят,
+                DateImplement = DateTime.Now
             });
-            if (element != null)
+        }
+        public void TakeOrderInWork(ChangeStatusBindingModel model)
+        {
+            var order = _orderStorage.GetElement(new OrderBindingModel
             {
-                throw new Exception("Уже есть такой заказ");
-            }
-            else
+                Id =
+           model.OrderId
+            });
+            if (order == null)
             {
-                _orderStorage.Insert();
+                throw new Exception("Не найден заказ");
             }
+            if (order.Status.ToString() != "Принят")
+            {
+                throw new Exception("Заказ не в статусе \"Принят\"");
+            }
+            _orderStorage.Update(new OrderBindingModel
+            {
+                Id = order.Id,
+                ProductId = order.ProductId,
+                Count = order.Count,
+                Sum = order.Sum,
+                DateCreate = order.DateCreate,
+                DateImplement = DateTime.Now,
+                Status = OrderStatus.Выполняется
+            });
+        }
+        public void FinishOrder(ChangeStatusBindingModel model)
+        {
+            var order = _orderStorage.GetElement(new OrderBindingModel
+            {
+                Id =
+           model.OrderId
+            });
+            if (order == null)
+            {
+                throw new Exception("Не найден заказ");
+            }
+            if (order.Status.ToString() != "Выполняется")
+            {
+                throw new Exception("Заказ не в статусе \"Выполняется\"");
+            }
+            _orderStorage.Update(new OrderBindingModel
+            {
+                Id = order.Id,
+                ProductId = order.ProductId,
+                Count = order.Count,
+                Sum = order.Sum,
+                DateCreate = order.DateCreate,
+                DateImplement = order.DateImplement,
+                Status = OrderStatus.Готов
+            });
+        }
+        public void DeliveryOrder(ChangeStatusBindingModel model)
+        {
+            var order = _orderStorage.GetElement(new OrderBindingModel
+            {
+                Id =
+           model.OrderId
+            });
+
+            if (order == null)
+            {
+                throw new Exception("Не найден заказ");
+            }
+
+            if (order.Status.ToString() != "Готов")
+            {
+                throw new Exception("Заказ не в статусе \"Готов\"");
+            }
+
+            _orderStorage.Update(new OrderBindingModel
+            {
+                Id = order.Id,
+                ProductId = order.ProductId,
+                Count = order.Count,
+                Sum = order.Sum,
+                DateCreate = order.DateCreate,
+                DateImplement = order.DateImplement,
+                Status = OrderStatus.Выдан
+            });
 
         }
     }

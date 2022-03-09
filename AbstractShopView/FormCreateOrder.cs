@@ -26,7 +26,22 @@ namespace AbstractShopView
 
         private void FormCreateOrder_Load(object sender, EventArgs e)
         {
-            //логика
+            try
+            {
+                List<ProductViewModel> list = _logicP.Read(null);
+                if (list != null)
+                {
+                    comboBoxProduct.DisplayMember = "ProductName";
+                    comboBoxProduct.ValueMember = "Id";
+                    comboBoxProduct.DataSource = list;
+                    comboBoxProduct.SelectedItem = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+            }
         }
 
         private void CalcSum()

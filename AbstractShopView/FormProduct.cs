@@ -81,66 +81,6 @@ pc.Value.Item2 });
             }
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            var form = Program.Container.Resolve<FormProductComponent>();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                if (productComponents.ContainsKey(form.Id))
-                {
-                    productComponents[form.Id] = (form.ComponentName, form.Count);
-                }
-                else
-                {
-                    productComponents.Add(form.Id, (form.ComponentName, form.Count));
-                }
-                LoadData();
-            }
-        }
-
-        private void buttonUpd_Click(object sender, EventArgs e)
-        {
-            if (dataGridView.SelectedRows.Count == 1)
-            {
-                var form = Program.Container.Resolve<FormProductComponent>();
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                form.Id = id;
-                form.Count = productComponents[id].Item2;
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    productComponents[form.Id] = (form.ComponentName, form.Count);
-                    LoadData();
-                }
-            }
-        }
-
-        private void buttonDel_Click(object sender, EventArgs e)
-        {
-            if (dataGridView.SelectedRows.Count == 1)
-            {
-                if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo,
-               MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    try
-                    {
-
-                        productComponents.Remove(Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value));
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                       MessageBoxIcon.Error);
-                    }
-                    LoadData();
-                }
-            }
-        }
-
-        private void buttonRef_Click(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxName.Text))
@@ -185,6 +125,66 @@ pc.Value.Item2 });
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void buttonUpd_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedRows.Count == 1)
+            {
+                var form = Program.Container.Resolve<FormProductComponent>();
+                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                form.Id = id;
+                form.Count = productComponents[id].Item2;
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    productComponents[form.Id] = (form.ComponentName, form.Count);
+                    LoadData();
+                }
+            }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormProductComponent>();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                if (productComponents.ContainsKey(form.Id))
+                {
+                    productComponents[form.Id] = (form.ComponentName, form.Count);
+                }
+                else
+                {
+                    productComponents.Add(form.Id, (form.ComponentName, form.Count));
+                }
+                LoadData();
+            }
+        }
+
+        private void buttonDel_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedRows.Count == 1)
+            {
+                if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+
+                        productComponents.Remove(Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
+                    }
+                    LoadData();
+                }
+            }
+        }
+
+        private void buttonRef_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }
