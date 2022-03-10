@@ -16,9 +16,9 @@ namespace AbstractShopView
     public partial class FormComponent : Form
     {
         public int Id { set { id = value; } }
-        private readonly IComponentLogic _logic;
+        private readonly IDetailLogic _logic;
         private int? id;
-        public FormComponent(IComponentLogic logic)
+        public FormComponent(IDetailLogic logic)
         {
             InitializeComponent();
             _logic = logic;
@@ -31,10 +31,10 @@ namespace AbstractShopView
             {
                 try
                 {
-                    var view = _logic.Read(new ComponentBindingModel { Id = id })?[0];
+                    var view = _logic.Read(new DetailBindingModel { Id = id })?[0];
                     if (view != null)
                     {
-                        textBoxName.Text = view.ComponentName;
+                        textBoxName.Text = view.DetailName;
                     }
                 }
                 catch (Exception ex)
@@ -55,10 +55,10 @@ namespace AbstractShopView
             }
             try
             {
-                _logic.CreateOrUpdate(new ComponentBindingModel
+                _logic.CreateOrUpdate(new DetailBindingModel
                 {
                     Id = id,
-                    ComponentName = textBoxName.Text
+                    DetailName = textBoxName.Text
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);

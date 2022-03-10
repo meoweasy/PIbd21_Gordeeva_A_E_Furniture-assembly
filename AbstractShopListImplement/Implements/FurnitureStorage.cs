@@ -35,7 +35,7 @@ namespace AbstractShopListImplement.Implements
             var result = new List<FurnitureViewModel>();
             foreach (var product in source.Products)
             {
-                if (product.ProductName.Contains(model.FurnitureName))
+                if (product.FurnitureName.Contains(model.FurnitureName))
                 {
                     result.Add(CreateModel(product));
                 }
@@ -50,7 +50,7 @@ namespace AbstractShopListImplement.Implements
             }
             foreach (var product in source.Products)
             {
-                if (product.Id == model.Id || product.ProductName ==
+                if (product.Id == model.Id || product.FurnitureName ==
                 model.FurnitureName)
                 {
                     return CreateModel(product);
@@ -63,7 +63,7 @@ namespace AbstractShopListImplement.Implements
             var tempProduct = new Furniture
             {
                 Id = 1,
-                ProductComponents = new
+                FurnitureDetails = new
             Dictionary<int, int>()
             };
             foreach (var product in source.Products)
@@ -106,27 +106,27 @@ namespace AbstractShopListImplement.Implements
         private static Furniture CreateModel(FurnitureBindingModel model, Furniture
         product)
         {
-            product.ProductName = model.FurnitureName;
+            product.FurnitureName = model.FurnitureName;
             product.Price = model.Price;
             // удаляем убранные
-            foreach (var key in product.ProductComponents.Keys.ToList())
+            foreach (var key in product.FurnitureDetails.Keys.ToList())
             {
                 if (!model.FurnitureDetails.ContainsKey(key))
                 {
-                    product.ProductComponents.Remove(key);
+                    product.FurnitureDetails.Remove(key);
                 }
             }
             // обновляем существуюущие и добавляем новые
             foreach (var component in model.FurnitureDetails)
             {
-                if (product.ProductComponents.ContainsKey(component.Key))
+                if (product.FurnitureDetails.ContainsKey(component.Key))
                 {
-                    product.ProductComponents[component.Key] =
+                    product.FurnitureDetails[component.Key] =
                     model.FurnitureDetails[component.Key].Item2;
                 }
                 else
                 {
-                    product.ProductComponents.Add(component.Key,
+                    product.FurnitureDetails.Add(component.Key,
                     model.FurnitureDetails[component.Key].Item2);
                 }
             }
@@ -136,14 +136,14 @@ namespace AbstractShopListImplement.Implements
         {
             // требуется дополнительно получить список компонентов для изделия с названиями и их количество
             var productComponents = new Dictionary<int, (string, int)>();
-            foreach (var pc in product.ProductComponents)
+            foreach (var pc in product.FurnitureDetails)
             {
                 string componentName = string.Empty;
                 foreach (var component in source.Components)
                 {
                     if (pc.Key == component.Id)
                     {
-                        componentName = component.ComponentName;
+                        componentName = component.DetailName;
                         break;
                     }
                 }
@@ -152,9 +152,9 @@ namespace AbstractShopListImplement.Implements
             return new FurnitureViewModel
             {
                 Id = product.Id,
-                ProductName = product.ProductName,
+                FurnitureName = product.FurnitureName,
                 Price = product.Price,
-                ProductComponents = productComponents
+                FurnitureDetails = productComponents
             };
         }
     }

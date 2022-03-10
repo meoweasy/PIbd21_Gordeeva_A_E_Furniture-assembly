@@ -15,6 +15,6 @@ namespace AbstractShopContracts.ViewModels
     {
         public int Id { get; set; }
         [DisplayName("Название компонента")]
-        public string ComponentName { get; set; }
+        public string DetailName { get; set; }
     }
 }

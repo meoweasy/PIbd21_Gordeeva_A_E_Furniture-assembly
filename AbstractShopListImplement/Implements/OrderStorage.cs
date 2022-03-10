@@ -36,7 +36,7 @@ namespace AbstractShopListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (order.ProductId == model.ProductId)
+                if (order.FurnitureId == model.FurnitureId)
                 {
                     result.Add(CreateModel(order));
                 }
@@ -51,8 +51,8 @@ namespace AbstractShopListImplement.Implements
             }
             foreach (var order in source.Orders)
             {
-                if (order.Id == model.Id || order.ProductId ==
-               model.ProductId)
+                if (order.Id == model.Id || order.FurnitureId ==
+               model.FurnitureId)
                 {
                     return CreateModel(order);
                 }
@@ -105,7 +105,7 @@ namespace AbstractShopListImplement.Implements
         private Order CreateModel(OrderBindingModel model, Order order)
         {
 
-            order.ProductId = model.ProductId;
+            order.FurnitureId = model.FurnitureId;
             order.Count = model.Count;
             order.Sum = model.Sum;
             order.Status = model.Status;
@@ -120,8 +120,8 @@ namespace AbstractShopListImplement.Implements
             return new OrderViewModel
             {
                 Id = order.Id,
-                ProductId = order.ProductId,
-                //SushiName = order.SushiName,
+                FurnitureId = order.FurnitureId,
+                FurnitureName = order.FurnitureName,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = order.Status.ToString(),

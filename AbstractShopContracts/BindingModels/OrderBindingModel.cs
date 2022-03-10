@@ -14,6 +14,7 @@ namespace AbstractShopContracts.BindingModels
     {
         public int? Id { get; set; }
         public int FurnitureId { get; set; }
+        public string FurnitureName { get; set; }
         public int Count { get; set; }
         public decimal Sum { get; set; }
         public OrderStatus Status { get; set; }

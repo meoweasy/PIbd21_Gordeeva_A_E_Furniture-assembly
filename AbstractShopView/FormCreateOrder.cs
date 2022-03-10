@@ -15,9 +15,9 @@ namespace AbstractShopView
 {
     public partial class FormCreateOrder : Form
     {
-        private readonly IProductLogic _logicP;
+        private readonly IFurnitureLogic _logicP;
         private readonly IOrderLogic _logicO;
-        public FormCreateOrder(IProductLogic logicP, IOrderLogic logicO)
+        public FormCreateOrder(IFurnitureLogic logicP, IOrderLogic logicO)
         {
             InitializeComponent();
             _logicP = logicP;
@@ -28,7 +28,7 @@ namespace AbstractShopView
         {
             try
             {
-                List<ProductViewModel> list = _logicP.Read(null);
+                List<FurnitureViewModel> list = _logicP.Read(null);
                 if (list != null)
                 {
                     comboBoxProduct.DisplayMember = "ProductName";
@@ -52,7 +52,7 @@ namespace AbstractShopView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxProduct.SelectedValue);
-                    ProductViewModel product = _logicP.Read(new ProductBindingModel
+                    FurnitureViewModel product = _logicP.Read(new FurnitureBindingModel
                     {
                         Id
                     = id
@@ -95,7 +95,7 @@ namespace AbstractShopView
             {
                 _logicO.CreateOrder(new CreateOrderBindingModel
                 {
-                    ProductId = Convert.ToInt32(comboBoxProduct.SelectedValue),
+                    FurnitureId = Convert.ToInt32(comboBoxProduct.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Sum = Convert.ToDecimal(textBoxSum.Text)
                 });

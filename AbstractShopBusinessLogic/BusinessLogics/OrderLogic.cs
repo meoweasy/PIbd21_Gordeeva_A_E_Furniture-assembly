@@ -35,6 +35,7 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             _orderStorage.Insert(new OrderBindingModel
             {
                 FurnitureId = model.FurnitureId,
+                FurnitureName = model.FurnitureName,
                 Count = model.Count,
                 Sum = model.Sum,
                 DateCreate = DateTime.Now,
@@ -61,6 +62,7 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                FurnitureName = order.FurnitureName,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
@@ -86,6 +88,7 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                FurnitureName = order.FurnitureName,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
@@ -115,6 +118,7 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                FurnitureName = order.FurnitureName,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,

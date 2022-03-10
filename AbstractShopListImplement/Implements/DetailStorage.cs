@@ -36,7 +36,7 @@ namespace AbstractShopListImplement.Implements
             var result = new List<DetailViewModel>();
             foreach (var component in source.Components)
             {
-                if (component.ComponentName.Contains(model.DetailName))
+                if (component.DetailName.Contains(model.DetailName))
                 {
                     result.Add(CreateModel(component));
                 }
@@ -51,7 +51,7 @@ namespace AbstractShopListImplement.Implements
             }
             foreach (var component in source.Components)
             {
-                if (component.Id == model.Id || component.ComponentName ==
+                if (component.Id == model.Id || component.DetailName ==
                model.DetailName)
                 {
                     return CreateModel(component);
@@ -102,7 +102,7 @@ namespace AbstractShopListImplement.Implements
         private static Detail CreateModel(DetailBindingModel model, Detail
 component)
         {
-            component.ComponentName = model.DetailName;
+            component.DetailName = model.DetailName;
             return component;
         }
         private static DetailViewModel CreateModel(Detail component)
@@ -110,7 +110,7 @@ component)
             return new DetailViewModel
             {
                 Id = component.Id,
-                ComponentName = component.ComponentName
+                DetailName = component.DetailName
             };
         }
     }

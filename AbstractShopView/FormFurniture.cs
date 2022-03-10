@@ -42,9 +42,9 @@ namespace AbstractShopView
                     })?[0];
                     if (view != null)
                     {
-                        textBoxName.Text = view.ProductName;
+                        textBoxName.Text = view.FurnitureName;
                         textBoxPrice.Text = view.Price.ToString();
-                        FurnitureDetails = view.ProductComponents;
+                        FurnitureDetails = view.FurnitureDetails;
                         LoadData();
                     }
                 }
