@@ -32,7 +32,7 @@ namespace AbstractShopView
             this.labelComponent = new System.Windows.Forms.Label();
             this.labelCount = new System.Windows.Forms.Label();
             this.textBoxCount = new System.Windows.Forms.TextBox();
-            this.comboBoxComponent = new System.Windows.Forms.ComboBox();
+            this.comboBoxDetail = new System.Windows.Forms.ComboBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -62,14 +62,14 @@ namespace AbstractShopView
             this.textBoxCount.Size = new System.Drawing.Size(235, 23);
             this.textBoxCount.TabIndex = 3;
             // 
-            // comboBoxComponent
+            // comboBoxDetail
             // 
-            this.comboBoxComponent.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.comboBoxComponent.FormattingEnabled = true;
-            this.comboBoxComponent.Location = new System.Drawing.Point(90, 6);
-            this.comboBoxComponent.Name = "comboBoxComponent";
-            this.comboBoxComponent.Size = new System.Drawing.Size(235, 23);
-            this.comboBoxComponent.TabIndex = 4;
+            this.comboBoxDetail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.comboBoxDetail.FormattingEnabled = true;
+            this.comboBoxDetail.Location = new System.Drawing.Point(90, 6);
+            this.comboBoxDetail.Name = "comboBoxDetail";
+            this.comboBoxDetail.Size = new System.Drawing.Size(235, 23);
+            this.comboBoxDetail.TabIndex = 4;
             // 
             // buttonCancel
             // 
@@ -91,19 +91,19 @@ namespace AbstractShopView
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // FormProductComponent
+            // FormFurnitureDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 97);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.comboBoxComponent);
+            this.Controls.Add(this.comboBoxDetail);
             this.Controls.Add(this.textBoxCount);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.labelComponent);
-            this.Name = "FormProductComponent";
-            this.Text = "Компонент изделия";
+            this.Name = "FormFurnitureDetail";
+            this.Text = "Деталь мебели";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,7 +114,7 @@ namespace AbstractShopView
         private System.Windows.Forms.Label labelComponent;
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.TextBox textBoxCount;
-        private System.Windows.Forms.ComboBox comboBoxComponent;
+        private System.Windows.Forms.ComboBox comboBoxDetail;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
     }

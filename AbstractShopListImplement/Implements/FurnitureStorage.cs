@@ -19,10 +19,10 @@ namespace AbstractShopListImplement.Implements
         }
         public List<FurnitureViewModel> GetFullList()
         {
-            var result = new List<FurnitureViewModel>();
-            foreach (var component in source.Products)
+            List<FurnitureViewModel> result = new List<FurnitureViewModel>();
+            foreach (var detail in source.Furnitures)
             {
-                result.Add(CreateModel(component));
+                result.Add(CreateModel(detail));
             }
             return result;
         }
@@ -32,129 +32,129 @@ namespace AbstractShopListImplement.Implements
             {
                 return null;
             }
-            var result = new List<FurnitureViewModel>();
-            foreach (var product in source.Products)
+            List<FurnitureViewModel> result = new List<FurnitureViewModel>();
+            foreach (var furniture in source.Furnitures)
             {
-                if (product.FurnitureName.Contains(model.FurnitureName))
+                if (furniture.FurnitureName.Contains(model.FurnitureName))
                 {
-                    result.Add(CreateModel(product));
+                    result.Add(CreateModel(furniture));
                 }
             }
             return result;
         }
-        public FurnitureViewModel GetElement(FurnitureBindingModel model)
+        public FurnitureViewModel GetElement(FurnitureBindingModel sample)
         {
-            if (model == null)
+            if (sample == null)
             {
                 return null;
             }
-            foreach (var product in source.Products)
+            foreach (var furniture in source.Furnitures)
             {
-                if (product.Id == model.Id || product.FurnitureName ==
-                model.FurnitureName)
+                if (furniture.Id == sample.Id || furniture.FurnitureName ==
+                sample.FurnitureName)
                 {
-                    return CreateModel(product);
+                    return CreateModel(furniture);
                 }
             }
             return null;
         }
         public void Insert(FurnitureBindingModel model)
         {
-            var tempProduct = new Furniture
+            Furniture tempFurniture = new Furniture
             {
                 Id = 1,
                 FurnitureDetails = new
             Dictionary<int, int>()
             };
-            foreach (var product in source.Products)
+            foreach (var furniture in source.Furnitures)
             {
-                if (product.Id >= tempProduct.Id)
+                if (furniture.Id >= tempFurniture.Id)
                 {
-                    tempProduct.Id = product.Id + 1;
+                    tempFurniture.Id = furniture.Id + 1;
                 }
             }
-            source.Products.Add(CreateModel(model, tempProduct));
+            source.Furnitures.Add(CreateSample(model, tempFurniture));
         }
         public void Update(FurnitureBindingModel model)
         {
-            Furniture tempProduct = null;
-            foreach (var product in source.Products)
+            Furniture tempFurniture = null;
+            foreach (var furniture in source.Furnitures)
             {
-                if (product.Id == model.Id)
+                if (furniture.Id == model.Id)
                 {
-                    tempProduct = product;
+                    tempFurniture = furniture;
                 }
             }
-            if (tempProduct == null)
+            if (tempFurniture == null)
             {
-                throw new Exception("Элемент не найден");
+                throw new Exception("Мебель не найдена");
             }
-            CreateModel(model, tempProduct);
+            CreateSample(model, tempFurniture);
         }
-        public void Delete(FurnitureBindingModel model)
+        public void Delete(FurnitureBindingModel sample)
         {
-            for (int i = 0; i < source.Products.Count; ++i)
+            for (int i = 0; i < source.Furnitures.Count; ++i)
             {
-                if (source.Products[i].Id == model.Id)
+                if (source.Furnitures[i].Id == sample.Id)
                 {
-                    source.Products.RemoveAt(i);
+                    source.Furnitures.RemoveAt(i);
                     return;
                 }
             }
-            throw new Exception("Элемент не найден");
+            throw new Exception("Мебель не найдена");
         }
-        private static Furniture CreateModel(FurnitureBindingModel model, Furniture
-        product)
+        private Furniture CreateSample(FurnitureBindingModel sample, Furniture furniture)
         {
-            product.FurnitureName = model.FurnitureName;
-            product.Price = model.Price;
+            furniture.FurnitureName = sample.FurnitureName;
+            furniture.Price = sample.Price;
             // удаляем убранные
-            foreach (var key in product.FurnitureDetails.Keys.ToList())
+            foreach (var key in furniture.FurnitureDetails.Keys.ToList())
             {
-                if (!model.FurnitureDetails.ContainsKey(key))
+                if (!sample.FurnitureDetails.ContainsKey(key))
                 {
-                    product.FurnitureDetails.Remove(key);
+                    furniture.FurnitureDetails.Remove(key);
                 }
             }
             // обновляем существуюущие и добавляем новые
-            foreach (var component in model.FurnitureDetails)
+            foreach (var detail in sample.FurnitureDetails)
             {
-                if (product.FurnitureDetails.ContainsKey(component.Key))
+                if (furniture.FurnitureDetails.ContainsKey(detail.Key))
                 {
-                    product.FurnitureDetails[component.Key] =
-                    model.FurnitureDetails[component.Key].Item2;
+                    furniture.FurnitureDetails[detail.Key] =
+                    sample.FurnitureDetails[detail.Key].Item2;
                 }
                 else
                 {
-                    product.FurnitureDetails.Add(component.Key,
-                    model.FurnitureDetails[component.Key].Item2);
+                    furniture.FurnitureDetails.Add(detail.Key,
+                    sample.FurnitureDetails[detail.Key].Item2);
                 }
             }
-            return product;
+            return furniture;
         }
-        private FurnitureViewModel CreateModel(Furniture product)
+        private FurnitureViewModel CreateModel(Furniture furniture)
         {
             // требуется дополнительно получить список компонентов для изделия с названиями и их количество
-            var productComponents = new Dictionary<int, (string, int)>();
-            foreach (var pc in product.FurnitureDetails)
+            Dictionary<int, (string, int)> furnitureDetails = new
+            Dictionary<int, (string, int)>();
+            foreach (var pc in furniture.FurnitureDetails)
             {
-                string componentName = string.Empty;
-                foreach (var component in source.Components)
+                string detailName = string.Empty;
+                foreach (var detail in source.Details)
                 {
-                    if (pc.Key == component.Id)
+                    if (pc.Key == detail.Id)
                     {
-                        componentName = component.DetailName;
+                        detailName = detail.DetailName;
                         break;
                     }
                 }
-                productComponents.Add(pc.Key, (componentName, pc.Value));
+                furnitureDetails.Add(pc.Key, (detailName, pc.Value));
             }
             return new FurnitureViewModel
             {
-                Id = product.Id,
-                FurnitureName = product.FurnitureName,
-                Price = product.Price,
-                FurnitureDetails = productComponents
+                Id = furniture.Id,
+                FurnitureName = furniture.FurnitureName,
+                Price = furniture.Price,
+                FurnitureDetails = furnitureDetails
             };
         }
     }

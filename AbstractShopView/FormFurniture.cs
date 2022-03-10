@@ -137,7 +137,7 @@ pc.Value.Item2 });
                 form.Count = FurnitureDetails[id].Item2;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    FurnitureDetails[form.Id] = (form.ComponentName, form.Count);
+                    FurnitureDetails[form.Id] = (form.DetailName, form.Count);
                     LoadData();
                 }
             }
@@ -150,11 +150,11 @@ pc.Value.Item2 });
             {
                 if (FurnitureDetails.ContainsKey(form.Id))
                 {
-                    FurnitureDetails[form.Id] = (form.ComponentName, form.Count);
+                    FurnitureDetails[form.Id] = (form.DetailName, form.Count);
                 }
                 else
                 {
-                    FurnitureDetails.Add(form.Id, (form.ComponentName, form.Count));
+                    FurnitureDetails.Add(form.Id, (form.DetailName, form.Count));
                 }
                 LoadData();
             }

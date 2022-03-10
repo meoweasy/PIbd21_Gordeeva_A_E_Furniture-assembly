@@ -32,7 +32,7 @@ namespace AbstractShopView
             this.labelProduct = new System.Windows.Forms.Label();
             this.labelCount = new System.Windows.Forms.Label();
             this.labelSum = new System.Windows.Forms.Label();
-            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
+            this.comboBoxFurniture = new System.Windows.Forms.ComboBox();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.textBoxSum = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -66,13 +66,13 @@ namespace AbstractShopView
             this.labelSum.TabIndex = 2;
             this.labelSum.Text = "Сумма";
             // 
-            // comboBoxProduct
+            // comboBoxFurniture
             // 
-            this.comboBoxProduct.FormattingEnabled = true;
-            this.comboBoxProduct.Location = new System.Drawing.Point(121, 5);
-            this.comboBoxProduct.Name = "comboBoxProduct";
-            this.comboBoxProduct.Size = new System.Drawing.Size(292, 23);
-            this.comboBoxProduct.TabIndex = 3;
+            this.comboBoxFurniture.FormattingEnabled = true;
+            this.comboBoxFurniture.Location = new System.Drawing.Point(121, 5);
+            this.comboBoxFurniture.Name = "comboBoxFurniture";
+            this.comboBoxFurniture.Size = new System.Drawing.Size(292, 23);
+            this.comboBoxFurniture.TabIndex = 3;
             // 
             // textBoxCount
             // 
@@ -117,7 +117,7 @@ namespace AbstractShopView
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxSum);
             this.Controls.Add(this.textBoxCount);
-            this.Controls.Add(this.comboBoxProduct);
+            this.Controls.Add(this.comboBoxFurniture);
             this.Controls.Add(this.labelSum);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.labelProduct);
@@ -134,7 +134,7 @@ namespace AbstractShopView
         private System.Windows.Forms.Label labelProduct;
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.Label labelSum;
-        private System.Windows.Forms.ComboBox comboBoxProduct;
+        private System.Windows.Forms.ComboBox comboBoxFurniture;
         private System.Windows.Forms.TextBox textBoxCount;
         private System.Windows.Forms.TextBox textBoxSum;
         private System.Windows.Forms.Button buttonSave;

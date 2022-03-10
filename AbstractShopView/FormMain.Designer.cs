@@ -65,14 +65,14 @@ namespace AbstractShopView
             // КомпонентыToolStripMenuItem
             // 
             this.КомпонентыToolStripMenuItem.Name = "КомпонентыToolStripMenuItem";
-            this.КомпонентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.КомпонентыToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.КомпонентыToolStripMenuItem.Text = "Компоненты";
             this.КомпонентыToolStripMenuItem.Click += new System.EventHandler(this.КомпонентыToolStripMenuItem_Click_1);
             // 
             // ИзделияToolStripMenuItem
             // 
             this.ИзделияToolStripMenuItem.Name = "ИзделияToolStripMenuItem";
-            this.ИзделияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ИзделияToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.ИзделияToolStripMenuItem.Text = "Изделия";
             this.ИзделияToolStripMenuItem.Click += new System.EventHandler(this.ИзделияToolStripMenuItem_Click_1);
             // 
@@ -150,7 +150,7 @@ namespace AbstractShopView
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
-            this.Text = "Абстрактный магазин";
+            this.Text = "Сборка мебели";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

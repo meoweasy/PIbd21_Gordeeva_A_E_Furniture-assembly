@@ -17,10 +17,10 @@ namespace AbstractShopView
     {
         public int Id
         {
-            get { return Convert.ToInt32(comboBoxComponent.SelectedValue); }
-            set { comboBoxComponent.SelectedValue = value; }
+            get { return Convert.ToInt32(comboBoxDetail.SelectedValue); }
+            set { comboBoxDetail.SelectedValue = value; }
         }
-        public string ComponentName { get { return comboBoxComponent.Text; } }
+        public string DetailName { get { return comboBoxDetail.Text; } }
         public int Count
         {
             get { return Convert.ToInt32(textBoxCount.Text); }
@@ -36,10 +36,10 @@ namespace AbstractShopView
             List<DetailViewModel> list = logic.Read(null);
             if (list != null)
             {
-                comboBoxComponent.DisplayMember = "ComponentName";
-                comboBoxComponent.ValueMember = "Id";
-                comboBoxComponent.DataSource = list;
-                comboBoxComponent.SelectedItem = null;
+                comboBoxDetail.DisplayMember = "DetailName";
+                comboBoxDetail.ValueMember = "Id";
+                comboBoxDetail.DataSource = list;
+                comboBoxDetail.SelectedItem = null;
             }
         }
 
@@ -51,7 +51,7 @@ namespace AbstractShopView
                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (comboBoxComponent.SelectedValue == null)
+            if (comboBoxDetail.SelectedValue == null)
             {
                 MessageBox.Show("Выберите компонент", "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);

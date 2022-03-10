@@ -12,27 +12,27 @@ namespace AbstractShopBusinessLogic.BusinessLogics
 {
     public class FurnitureLogic : IFurnitureLogic
     {
-        private readonly IFurnitureStorage _sushiStorage;
+        private readonly IFurnitureStorage _furnitureStorage;
         public FurnitureLogic(IFurnitureStorage sushiStorage)
         {
-            _sushiStorage = sushiStorage;
+            _furnitureStorage = sushiStorage;
         }
         public List<FurnitureViewModel> Read(FurnitureBindingModel model)
         {
             if (model == null)
             {
-                return _sushiStorage.GetFullList();
+                return _furnitureStorage.GetFullList();
             }
             if (model.Id.HasValue)
             {
-                return new List<FurnitureViewModel> { _sushiStorage.GetElement(model)
+                return new List<FurnitureViewModel> {_furnitureStorage.GetElement(model)
 };
             }
-            return _sushiStorage.GetFilteredList(model);
+            return _furnitureStorage.GetFilteredList(model);
         }
         public void CreateOrUpdate(FurnitureBindingModel model)
         {
-            var element = _sushiStorage.GetElement(new FurnitureBindingModel
+            var element = _furnitureStorage.GetElement(new FurnitureBindingModel
             {
                 FurnitureName = model.FurnitureName
             });
@@ -42,25 +42,24 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             }
             if (model.Id.HasValue)
             {
-                _sushiStorage.Update(model);
+                _furnitureStorage.Update(model);
             }
             else
             {
-                _sushiStorage.Insert(model);
+                _furnitureStorage.Insert(model);
             }
         }
         public void Delete(FurnitureBindingModel model)
         {
-            var element = _sushiStorage.GetElement(new FurnitureBindingModel
+            var element = _furnitureStorage.GetElement(new FurnitureBindingModel
             {
-                Id =
-           model.Id
+                Id = model.Id
             });
             if (element == null)
             {
                 throw new Exception("Ингредиент не найден");
             }
-            _sushiStorage.Delete(model);
+            _furnitureStorage.Delete(model);
         }
     }
 }

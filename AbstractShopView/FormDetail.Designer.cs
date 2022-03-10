@@ -1,7 +1,7 @@
 ﻿
 namespace AbstractShopView
 {
-    partial class FormComponent
+    partial class FormDetail
     {
         /// <summary>
         ///  Required designer variable.
@@ -71,7 +71,7 @@ namespace AbstractShopView
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // FormComponent
+            // FormDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,8 +80,8 @@ namespace AbstractShopView
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
-            this.Name = "FormComponent";
-            this.Text = "Компонент";
+            this.Name = "FormDetail";
+            this.Text = "Деталь";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,14 +11,14 @@ namespace AbstractShopListImplement
     public class DataListSingleton
     {
         private static DataListSingleton instance;
-        public List<Detail> Components { get; set; }
+        public List<Detail> Details { get; set; }
         public List<Order> Orders { get; set; }
-        public List<Furniture> Products { get; set; }
+        public List<Furniture> Furnitures { get; set; }
         private DataListSingleton()
         {
-            Components = new List<Detail>();
+            Details = new List<Detail>();
             Orders = new List<Order>();
-            Products = new List<Furniture>();
+            Furnitures = new List<Furniture>();
         }
         public static DataListSingleton GetInstance()
         {

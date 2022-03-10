@@ -13,16 +13,15 @@ using AbstractShopContracts.BusinessLogicsContracts;
 
 namespace AbstractShopView
 {
-    public partial class FormComponent : Form
+    public partial class FormDetail : Form
     {
         public int Id { set { id = value; } }
         private readonly IDetailLogic _logic;
         private int? id;
-        public FormComponent(IDetailLogic logic)
+        public FormDetail(IDetailLogic logic)
         {
             InitializeComponent();
             _logic = logic;
-
         }
 
         private void FormComponent_Load(object sender, EventArgs e)

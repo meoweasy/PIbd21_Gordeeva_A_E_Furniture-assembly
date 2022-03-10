@@ -49,7 +49,7 @@ namespace AbstractShopView
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(562, 12);
+            this.buttonAdd.Location = new System.Drawing.Point(526, 12);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(127, 23);
             this.buttonAdd.TabIndex = 1;
@@ -59,7 +59,7 @@ namespace AbstractShopView
             // 
             // buttonUpd
             // 
-            this.buttonUpd.Location = new System.Drawing.Point(562, 41);
+            this.buttonUpd.Location = new System.Drawing.Point(526, 41);
             this.buttonUpd.Name = "buttonUpd";
             this.buttonUpd.Size = new System.Drawing.Size(127, 23);
             this.buttonUpd.TabIndex = 2;
@@ -69,7 +69,7 @@ namespace AbstractShopView
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(562, 70);
+            this.buttonDel.Location = new System.Drawing.Point(526, 70);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(127, 23);
             this.buttonDel.TabIndex = 3;
@@ -79,7 +79,7 @@ namespace AbstractShopView
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(562, 99);
+            this.buttonRef.Location = new System.Drawing.Point(526, 99);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(127, 23);
             this.buttonRef.TabIndex = 4;
@@ -87,18 +87,18 @@ namespace AbstractShopView
             this.buttonRef.UseVisualStyleBackColor = true;
             this.buttonRef.Click += new System.EventHandler(this.buttonRef_Click);
             // 
-            // FormProducts
+            // FormFurnitures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 450);
+            this.ClientSize = new System.Drawing.Size(668, 450);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonUpd);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "FormProducts";
-            this.Text = "FormProducts";
+            this.Name = "FormFurnitures";
+            this.Text = "Мебель";
             this.Load += new System.EventHandler(this.FormProducts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

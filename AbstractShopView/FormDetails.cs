@@ -26,7 +26,7 @@ namespace AbstractShopView
 
         }
 
-        private void FormComponents_Load(object sender, EventArgs e)
+        private void FormDetails_Load(object sender, EventArgs e)
         {
             LoadData();
         }

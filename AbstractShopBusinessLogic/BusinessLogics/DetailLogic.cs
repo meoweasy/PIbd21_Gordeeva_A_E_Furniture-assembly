@@ -13,27 +13,27 @@ namespace AbstractShopBusinessLogic.BusinessLogics
 {
     public class DetailLogic : IDetailLogic
     {
-        private readonly IDetailStorage _componentStorage;
+        private readonly IDetailStorage _detailStorage;
         public DetailLogic(IDetailStorage componentStorage)
         {
-            _componentStorage = componentStorage;
+            _detailStorage = componentStorage;
         }
         public List<DetailViewModel> Read(DetailBindingModel model)
         {
             if (model == null)
             {
-                return _componentStorage.GetFullList();
+                return _detailStorage.GetFullList();
             }
             if (model.Id.HasValue)
             {
-                return new List<DetailViewModel> { _componentStorage.GetElement(model)
+                return new List<DetailViewModel> {_detailStorage.GetElement(model)
 };
             }
-            return _componentStorage.GetFilteredList(model);
+            return _detailStorage.GetFilteredList(model);
         }
         public void CreateOrUpdate(DetailBindingModel model)
         {
-            var element = _componentStorage.GetElement(new DetailBindingModel
+            var element = _detailStorage.GetElement(new DetailBindingModel
             {
                 DetailName = model.DetailName
             });
@@ -43,16 +43,16 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             }
             if (model.Id.HasValue)
             {
-                _componentStorage.Update(model);
+                _detailStorage.Update(model);
             }
             else
             {
-                _componentStorage.Insert(model);
+                _detailStorage.Insert(model);
             }
         }
         public void Delete(DetailBindingModel model)
         {
-            var element = _componentStorage.GetElement(new DetailBindingModel
+            var element = _detailStorage.GetElement(new DetailBindingModel
             {
                 Id =
            model.Id
@@ -61,7 +61,7 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             {
                 throw new Exception("Элемент не найден");
             }
-            _componentStorage.Delete(model);
+            _detailStorage.Delete(model);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace AbstractShopListImplement.Implements
         public List<DetailViewModel> GetFullList()
         {
             var result = new List<DetailViewModel>();
-            foreach (var component in source.Components)
+            foreach (var component in source.Details)
             {
                 result.Add(CreateModel(component));
             }
@@ -34,7 +34,7 @@ namespace AbstractShopListImplement.Implements
                 return null;
             }
             var result = new List<DetailViewModel>();
-            foreach (var component in source.Components)
+            foreach (var component in source.Details)
             {
                 if (component.DetailName.Contains(model.DetailName))
                 {
@@ -49,7 +49,7 @@ namespace AbstractShopListImplement.Implements
             {
                 return null;
             }
-            foreach (var component in source.Components)
+            foreach (var component in source.Details)
             {
                 if (component.Id == model.Id || component.DetailName ==
                model.DetailName)
@@ -62,19 +62,19 @@ namespace AbstractShopListImplement.Implements
         public void Insert(DetailBindingModel model)
         {
             var tempComponent = new Detail { Id = 1 };
-            foreach (var component in source.Components)
+            foreach (var component in source.Details)
             {
                 if (component.Id >= tempComponent.Id)
                 {
                     tempComponent.Id = component.Id + 1;
                 }
             }
-            source.Components.Add(CreateModel(model, tempComponent));
+            source.Details.Add(CreateModel(model, tempComponent));
         }
         public void Update(DetailBindingModel model)
         {
             Detail tempComponent = null;
-            foreach (var component in source.Components)
+            foreach (var component in source.Details)
             {
                 if (component.Id == model.Id)
                 {
@@ -89,11 +89,11 @@ namespace AbstractShopListImplement.Implements
         }
         public void Delete(DetailBindingModel model)
         {
-            for (int i = 0; i < source.Components.Count; ++i)
+            for (int i = 0; i < source.Details.Count; ++i)
             {
-                if (source.Components[i].Id == model.Id.Value)
+                if (source.Details[i].Id == model.Id.Value)
                 {
-                    source.Components.RemoveAt(i);
+                    source.Details.RemoveAt(i);
                     return;
                 }
             }

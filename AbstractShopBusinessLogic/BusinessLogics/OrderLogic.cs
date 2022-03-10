@@ -41,7 +41,7 @@ namespace AbstractShopBusinessLogic.BusinessLogics
                 DateCreate = DateTime.Now,
                 Status = OrderStatus.Принят,
                 DateImplement = DateTime.Now
-            });
+            }); ;
         }
         public void TakeOrderInWork(ChangeStatusBindingModel model)
         {

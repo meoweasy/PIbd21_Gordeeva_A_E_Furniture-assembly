@@ -31,10 +31,10 @@ namespace AbstractShopView
                 List<FurnitureViewModel> list = _logicP.Read(null);
                 if (list != null)
                 {
-                    comboBoxProduct.DisplayMember = "ProductName";
-                    comboBoxProduct.ValueMember = "Id";
-                    comboBoxProduct.DataSource = list;
-                    comboBoxProduct.SelectedItem = null;
+                    comboBoxFurniture.DisplayMember = "FurnitureName";
+                    comboBoxFurniture.ValueMember = "Id";
+                    comboBoxFurniture.DataSource = list;
+                    comboBoxFurniture.SelectedItem = null;
                 }
             }
             catch (Exception ex)
@@ -46,12 +46,12 @@ namespace AbstractShopView
 
         private void CalcSum()
         {
-            if (comboBoxProduct.SelectedValue != null &&
+            if (comboBoxFurniture.SelectedValue != null &&
            !string.IsNullOrEmpty(textBoxCount.Text))
             {
                 try
                 {
-                    int id = Convert.ToInt32(comboBoxProduct.SelectedValue);
+                    int id = Convert.ToInt32(comboBoxFurniture.SelectedValue);
                     FurnitureViewModel product = _logicP.Read(new FurnitureBindingModel
                     {
                         Id
@@ -85,7 +85,7 @@ namespace AbstractShopView
                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (comboBoxProduct.SelectedValue == null)
+            if (comboBoxFurniture.SelectedValue == null)
             {
                 MessageBox.Show("Выберите изделие", "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
@@ -95,7 +95,7 @@ namespace AbstractShopView
             {
                 _logicO.CreateOrder(new CreateOrderBindingModel
                 {
-                    FurnitureId = Convert.ToInt32(comboBoxProduct.SelectedValue),
+                    FurnitureId = Convert.ToInt32(comboBoxFurniture.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Sum = Convert.ToDecimal(textBoxSum.Text)
                 });
