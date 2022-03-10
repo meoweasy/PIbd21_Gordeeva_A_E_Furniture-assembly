@@ -9,10 +9,10 @@ using AbstractShopContracts.ViewModels;
 
 namespace AbstractShopContracts.BusinessLogicsContracts
 {
-    public interface IProductLogic
+    public interface IDetailLogic
     {
-        List<ProductViewModel> Read(ProductBindingModel model);
-        void CreateOrUpdate(ProductBindingModel model);
-        void Delete(ProductBindingModel model);
+        List<DetailViewModel> Read(DetailBindingModel model);
+        void CreateOrUpdate(DetailBindingModel model);
+        void Delete(DetailBindingModel model);
     }
 }

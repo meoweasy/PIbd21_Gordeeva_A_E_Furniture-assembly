@@ -13,9 +13,9 @@ namespace AbstractShopContracts.ViewModels
     public class OrderViewModel
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
+        public int FurnitureId { get; set; }
         [DisplayName("Изделие")]
-        public string ProductName { get; set; }
+        public string FurnitureName { get; set; }
         [DisplayName("Количество")]
         public int Count { get; set; }
         [DisplayName("Сумма")]

@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
-namespace AbstractShopListImplement.Models
+
+namespace AbstractShopContracts.ViewModels
 {
     /// <summary>
     /// Компонент, требуемый для изготовления изделия
     /// </summary>
-    public class Component
+    public class DetailViewModel
     {
         public int Id { get; set; }
+        [DisplayName("Название компонента")]
         public string ComponentName { get; set; }
     }
 }

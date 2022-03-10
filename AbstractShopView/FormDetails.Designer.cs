@@ -1,7 +1,7 @@
 ﻿
 namespace AbstractShopView
 {
-    partial class FormComponents
+    partial class FormDetails
     {
         /// <summary>
         /// Required designer variable.

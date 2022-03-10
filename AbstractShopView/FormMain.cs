@@ -129,13 +129,13 @@ namespace AbstractShopView
 
         private void КомпонентыToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            var form = Program.Container.Resolve<FormComponents>();
+            var form = Program.Container.Resolve<FormDetails>();
             form.ShowDialog();
         }
 
         private void ИзделияToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            var form = Program.Container.Resolve<FormProducts>();
+            var form = Program.Container.Resolve<FormFurnitures>();
             form.ShowDialog();
         }
     }

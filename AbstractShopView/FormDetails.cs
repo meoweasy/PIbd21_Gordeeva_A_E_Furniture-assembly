@@ -15,11 +15,11 @@ using AbstractShopContracts.BusinessLogicsContracts;
 
 namespace AbstractShopView
 {
-    public partial class FormComponents : Form
+    public partial class FormDetails : Form
     {
-        private readonly IComponentLogic _logic;
+        private readonly IDetailLogic _logic;
 
-        public FormComponents(IComponentLogic logic)
+        public FormDetails(IDetailLogic logic)
         {
             InitializeComponent();
             _logic = logic;
@@ -53,7 +53,7 @@ namespace AbstractShopView
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Program.Container.Resolve<FormComponent>();
+            var form = Program.Container.Resolve<FormDetail>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -64,7 +64,7 @@ namespace AbstractShopView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Program.Container.Resolve<FormComponent>();
+                var form = Program.Container.Resolve<FormDetail>();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -84,7 +84,7 @@ namespace AbstractShopView
                    Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        _logic.Delete(new ComponentBindingModel { Id = id });
+                        _logic.Delete(new DetailBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {

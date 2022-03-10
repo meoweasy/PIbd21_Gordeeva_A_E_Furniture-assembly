@@ -13,10 +13,10 @@ using Unity;
 
 namespace AbstractShopView
 {
-    public partial class FormProducts : Form
+    public partial class FormFurnitures : Form
     {
-        private readonly ProductLogic _logic;
-        public FormProducts(ProductLogic logic)
+        private readonly FurnitureLogic _logic;
+        public FormFurnitures(FurnitureLogic logic)
         {
             InitializeComponent();
             _logic = logic;
@@ -47,7 +47,7 @@ namespace AbstractShopView
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Program.Container.Resolve<FormProduct>();
+            var form = Program.Container.Resolve<FormFurniture>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -57,7 +57,7 @@ namespace AbstractShopView
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                var form = Program.Container.Resolve<FormProduct>();
+                var form = Program.Container.Resolve<FormFurniture>();
                 form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -76,7 +76,7 @@ namespace AbstractShopView
                    Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        _logic.Delete(new ProductBindingModel { Id = id });
+                        _logic.Delete(new FurnitureBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {

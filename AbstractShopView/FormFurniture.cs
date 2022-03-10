@@ -15,13 +15,13 @@ using AbstractShopContracts.ViewModels;
 
 namespace AbstractShopView
 {
-    public partial class FormProduct : Form
+    public partial class FormFurniture : Form
     {
         public int Id { set { id = value; } }
-        private readonly IProductLogic _logic;
+        private readonly IFurnitureLogic _logic;
         private int? id;
-        private Dictionary<int, (string, int)> productComponents;
-        public FormProduct(IProductLogic logic)
+        private Dictionary<int, (string, int)> FurnitureDetails;
+        public FormFurniture(IFurnitureLogic logic)
         {
             InitializeComponent();
             _logic = logic;
@@ -35,7 +35,7 @@ namespace AbstractShopView
             {
                 try
                 {
-                    ProductViewModel view = _logic.Read(new ProductBindingModel
+                    FurnitureViewModel view = _logic.Read(new FurnitureBindingModel
                     {
                         Id =
                    id.Value
@@ -44,7 +44,7 @@ namespace AbstractShopView
                     {
                         textBoxName.Text = view.ProductName;
                         textBoxPrice.Text = view.Price.ToString();
-                        productComponents = view.ProductComponents;
+                        FurnitureDetails = view.ProductComponents;
                         LoadData();
                     }
                 }
@@ -56,7 +56,7 @@ namespace AbstractShopView
             }
             else
             {
-                productComponents = new Dictionary<int, (string, int)>();
+                FurnitureDetails = new Dictionary<int, (string, int)>();
             }
         }
 
@@ -64,10 +64,10 @@ namespace AbstractShopView
         {
             try
             {
-                if (productComponents != null)
+                if (FurnitureDetails != null)
                 {
                     dataGridView.Rows.Clear();
-                    foreach (var pc in productComponents)
+                    foreach (var pc in FurnitureDetails)
                     {
                         dataGridView.Rows.Add(new object[] { pc.Key, pc.Value.Item1,
 pc.Value.Item2 });
@@ -94,7 +94,7 @@ pc.Value.Item2 });
                MessageBoxIcon.Error);
                 return;
             }
-            if (productComponents == null || productComponents.Count == 0)
+            if (FurnitureDetails == null || FurnitureDetails.Count == 0)
             {
                 MessageBox.Show("Заполните компоненты", "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
@@ -102,12 +102,12 @@ pc.Value.Item2 });
             }
             try
             {
-                _logic.CreateOrUpdate(new ProductBindingModel
+                _logic.CreateOrUpdate(new FurnitureBindingModel
                 {
                     Id = id,
-                    ProductName = textBoxName.Text,
+                    FurnitureName = textBoxName.Text,
                     Price = Convert.ToDecimal(textBoxPrice.Text),
-                    ProductComponents = productComponents
+                    FurnitureDetails = FurnitureDetails
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -131,13 +131,13 @@ pc.Value.Item2 });
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Program.Container.Resolve<FormProductComponent>();
+                var form = Program.Container.Resolve<FormFurnitureDetail>();
                 int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 form.Id = id;
-                form.Count = productComponents[id].Item2;
+                form.Count = FurnitureDetails[id].Item2;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    productComponents[form.Id] = (form.ComponentName, form.Count);
+                    FurnitureDetails[form.Id] = (form.ComponentName, form.Count);
                     LoadData();
                 }
             }
@@ -145,16 +145,16 @@ pc.Value.Item2 });
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Program.Container.Resolve<FormProductComponent>();
+            var form = Program.Container.Resolve<FormFurnitureDetail>();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                if (productComponents.ContainsKey(form.Id))
+                if (FurnitureDetails.ContainsKey(form.Id))
                 {
-                    productComponents[form.Id] = (form.ComponentName, form.Count);
+                    FurnitureDetails[form.Id] = (form.ComponentName, form.Count);
                 }
                 else
                 {
-                    productComponents.Add(form.Id, (form.ComponentName, form.Count));
+                    FurnitureDetails.Add(form.Id, (form.ComponentName, form.Count));
                 }
                 LoadData();
             }
@@ -170,7 +170,7 @@ pc.Value.Item2 });
                     try
                     {
 
-                        productComponents.Remove(Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value));
+                        FurnitureDetails.Remove(Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value));
                     }
                     catch (Exception ex)
                     {

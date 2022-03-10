@@ -11,39 +11,39 @@ using AbstractShopListImplement.Models;
 
 namespace AbstractShopListImplement.Implements
 {
-    public class ComponentStorage : IComponentStorage
+    public class DetailStorage : IDetailStorage
     {
         private readonly DataListSingleton source;
-        public ComponentStorage()
+        public DetailStorage()
         {
             source = DataListSingleton.GetInstance();
         }
-        public List<ComponentViewModel> GetFullList()
+        public List<DetailViewModel> GetFullList()
         {
-            var result = new List<ComponentViewModel>();
+            var result = new List<DetailViewModel>();
             foreach (var component in source.Components)
             {
                 result.Add(CreateModel(component));
             }
             return result;
         }
-        public List<ComponentViewModel> GetFilteredList(ComponentBindingModel model)
+        public List<DetailViewModel> GetFilteredList(DetailBindingModel model)
         {
             if (model == null)
             {
                 return null;
             }
-            var result = new List<ComponentViewModel>();
+            var result = new List<DetailViewModel>();
             foreach (var component in source.Components)
             {
-                if (component.ComponentName.Contains(model.ComponentName))
+                if (component.ComponentName.Contains(model.DetailName))
                 {
                     result.Add(CreateModel(component));
                 }
             }
             return result;
         }
-        public ComponentViewModel GetElement(ComponentBindingModel model)
+        public DetailViewModel GetElement(DetailBindingModel model)
         {
             if (model == null)
             {
@@ -52,16 +52,16 @@ namespace AbstractShopListImplement.Implements
             foreach (var component in source.Components)
             {
                 if (component.Id == model.Id || component.ComponentName ==
-               model.ComponentName)
+               model.DetailName)
                 {
                     return CreateModel(component);
                 }
             }
             return null;
         }
-        public void Insert(ComponentBindingModel model)
+        public void Insert(DetailBindingModel model)
         {
-            var tempComponent = new Component { Id = 1 };
+            var tempComponent = new Detail { Id = 1 };
             foreach (var component in source.Components)
             {
                 if (component.Id >= tempComponent.Id)
@@ -71,9 +71,9 @@ namespace AbstractShopListImplement.Implements
             }
             source.Components.Add(CreateModel(model, tempComponent));
         }
-        public void Update(ComponentBindingModel model)
+        public void Update(DetailBindingModel model)
         {
-            Component tempComponent = null;
+            Detail tempComponent = null;
             foreach (var component in source.Components)
             {
                 if (component.Id == model.Id)
@@ -87,7 +87,7 @@ namespace AbstractShopListImplement.Implements
             }
             CreateModel(model, tempComponent);
         }
-        public void Delete(ComponentBindingModel model)
+        public void Delete(DetailBindingModel model)
         {
             for (int i = 0; i < source.Components.Count; ++i)
             {
@@ -99,15 +99,15 @@ namespace AbstractShopListImplement.Implements
             }
             throw new Exception("Элемент не найден");
         }
-        private static Component CreateModel(ComponentBindingModel model, Component
+        private static Detail CreateModel(DetailBindingModel model, Detail
 component)
         {
-            component.ComponentName = model.ComponentName;
+            component.ComponentName = model.DetailName;
             return component;
         }
-        private static ComponentViewModel CreateModel(Component component)
+        private static DetailViewModel CreateModel(Detail component)
         {
-            return new ComponentViewModel
+            return new DetailViewModel
             {
                 Id = component.Id,
                 ComponentName = component.ComponentName

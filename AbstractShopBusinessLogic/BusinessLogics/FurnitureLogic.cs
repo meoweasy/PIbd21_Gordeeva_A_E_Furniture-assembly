@@ -10,14 +10,14 @@ using AbstractShopContracts.BusinessLogicsContracts;
 
 namespace AbstractShopBusinessLogic.BusinessLogics
 {
-    public class ProductLogic : IProductLogic
+    public class FurnitureLogic : IFurnitureLogic
     {
-        private readonly IProductStorage _sushiStorage;
-        public ProductLogic(IProductStorage sushiStorage)
+        private readonly IFurnitureStorage _sushiStorage;
+        public FurnitureLogic(IFurnitureStorage sushiStorage)
         {
             _sushiStorage = sushiStorage;
         }
-        public List<ProductViewModel> Read(ProductBindingModel model)
+        public List<FurnitureViewModel> Read(FurnitureBindingModel model)
         {
             if (model == null)
             {
@@ -25,16 +25,16 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             }
             if (model.Id.HasValue)
             {
-                return new List<ProductViewModel> { _sushiStorage.GetElement(model)
+                return new List<FurnitureViewModel> { _sushiStorage.GetElement(model)
 };
             }
             return _sushiStorage.GetFilteredList(model);
         }
-        public void CreateOrUpdate(ProductBindingModel model)
+        public void CreateOrUpdate(FurnitureBindingModel model)
         {
-            var element = _sushiStorage.GetElement(new ProductBindingModel
+            var element = _sushiStorage.GetElement(new FurnitureBindingModel
             {
-                ProductName = model.ProductName
+                FurnitureName = model.FurnitureName
             });
             if (element != null && element.Id != model.Id)
             {
@@ -49,9 +49,9 @@ namespace AbstractShopBusinessLogic.BusinessLogics
                 _sushiStorage.Insert(model);
             }
         }
-        public void Delete(ProductBindingModel model)
+        public void Delete(FurnitureBindingModel model)
         {
-            var element = _sushiStorage.GetElement(new ProductBindingModel
+            var element = _sushiStorage.GetElement(new FurnitureBindingModel
             {
                 Id =
            model.Id

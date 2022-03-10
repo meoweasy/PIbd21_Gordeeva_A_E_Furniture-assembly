@@ -13,7 +13,7 @@ using AbstractShopContracts.ViewModels;
 
 namespace AbstractShopView
 {
-    public partial class FormProductComponent : Form
+    public partial class FormFurnitureDetail : Form
     {
         public int Id
         {
@@ -30,10 +30,10 @@ namespace AbstractShopView
             }
         }
 
-        public FormProductComponent(IComponentLogic logic)
+        public FormFurnitureDetail(IDetailLogic logic)
         {
             InitializeComponent();
-            List<ComponentViewModel> list = logic.Read(null);
+            List<DetailViewModel> list = logic.Read(null);
             if (list != null)
             {
                 comboBoxComponent.DisplayMember = "ComponentName";

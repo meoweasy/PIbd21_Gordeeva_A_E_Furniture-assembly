@@ -11,14 +11,14 @@ using AbstractShopContracts.ViewModels;
 
 namespace AbstractShopBusinessLogic.BusinessLogics
 {
-    public class ComponentLogic : IComponentLogic
+    public class DetailLogic : IDetailLogic
     {
-        private readonly IComponentStorage _componentStorage;
-        public ComponentLogic(IComponentStorage componentStorage)
+        private readonly IDetailStorage _componentStorage;
+        public DetailLogic(IDetailStorage componentStorage)
         {
             _componentStorage = componentStorage;
         }
-        public List<ComponentViewModel> Read(ComponentBindingModel model)
+        public List<DetailViewModel> Read(DetailBindingModel model)
         {
             if (model == null)
             {
@@ -26,16 +26,16 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             }
             if (model.Id.HasValue)
             {
-                return new List<ComponentViewModel> { _componentStorage.GetElement(model)
+                return new List<DetailViewModel> { _componentStorage.GetElement(model)
 };
             }
             return _componentStorage.GetFilteredList(model);
         }
-        public void CreateOrUpdate(ComponentBindingModel model)
+        public void CreateOrUpdate(DetailBindingModel model)
         {
-            var element = _componentStorage.GetElement(new ComponentBindingModel
+            var element = _componentStorage.GetElement(new DetailBindingModel
             {
-                ComponentName = model.ComponentName
+                DetailName = model.DetailName
             });
             if (element != null && element.Id != model.Id)
             {
@@ -50,9 +50,9 @@ namespace AbstractShopBusinessLogic.BusinessLogics
                 _componentStorage.Insert(model);
             }
         }
-        public void Delete(ComponentBindingModel model)
+        public void Delete(DetailBindingModel model)
         {
-            var element = _componentStorage.GetElement(new ComponentBindingModel
+            var element = _componentStorage.GetElement(new DetailBindingModel
             {
                 Id =
            model.Id
