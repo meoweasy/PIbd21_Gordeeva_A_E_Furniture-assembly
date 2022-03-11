@@ -89,7 +89,7 @@ namespace AbstractShopView
             this.groupBox1.Controls.Add(this.buttonAdd);
             this.groupBox1.Location = new System.Drawing.Point(12, 67);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(543, 338);
+            this.groupBox1.Size = new System.Drawing.Size(510, 338);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Компоненты";
@@ -104,8 +104,9 @@ namespace AbstractShopView
             this.Count});
             this.dataGridView.Location = new System.Drawing.Point(6, 19);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowTemplate.Height = 25;
-            this.dataGridView.Size = new System.Drawing.Size(420, 311);
+            this.dataGridView.Size = new System.Drawing.Size(380, 311);
             this.dataGridView.TabIndex = 5;
             // 
             // ID
@@ -130,7 +131,7 @@ namespace AbstractShopView
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(431, 133);
+            this.buttonRef.Location = new System.Drawing.Point(392, 169);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(106, 28);
             this.buttonRef.TabIndex = 4;
@@ -140,7 +141,7 @@ namespace AbstractShopView
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(431, 99);
+            this.buttonDel.Location = new System.Drawing.Point(392, 135);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(106, 28);
             this.buttonDel.TabIndex = 3;
@@ -150,7 +151,7 @@ namespace AbstractShopView
             // 
             // buttonUpd
             // 
-            this.buttonUpd.Location = new System.Drawing.Point(431, 65);
+            this.buttonUpd.Location = new System.Drawing.Point(392, 101);
             this.buttonUpd.Name = "buttonUpd";
             this.buttonUpd.Size = new System.Drawing.Size(106, 28);
             this.buttonUpd.TabIndex = 2;
@@ -160,7 +161,7 @@ namespace AbstractShopView
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(431, 31);
+            this.buttonAdd.Location = new System.Drawing.Point(392, 67);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(106, 28);
             this.buttonAdd.TabIndex = 1;
@@ -170,7 +171,7 @@ namespace AbstractShopView
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(393, 415);
+            this.buttonSave.Location = new System.Drawing.Point(354, 415);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 5;
@@ -180,7 +181,7 @@ namespace AbstractShopView
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(474, 415);
+            this.buttonCancel.Location = new System.Drawing.Point(435, 415);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 6;
@@ -192,7 +193,7 @@ namespace AbstractShopView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 450);
+            this.ClientSize = new System.Drawing.Size(536, 450);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.groupBox1);

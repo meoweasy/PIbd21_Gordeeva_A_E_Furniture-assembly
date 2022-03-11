@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AbstractShopListImplement.Models
 {
     /// <summary>
-    /// Компонент, требуемый для изготовления изделия
+    /// Деталь, требуемая для изготовления мебели
     /// </summary>
     public class Detail
     {

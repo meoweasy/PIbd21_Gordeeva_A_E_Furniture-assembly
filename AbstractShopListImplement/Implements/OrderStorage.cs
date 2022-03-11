@@ -106,6 +106,7 @@ namespace AbstractShopListImplement.Implements
         {
 
             order.FurnitureId = model.FurnitureId;
+            order.FurnitureName = model.FurnitureName;
             order.Count = model.Count;
             order.Sum = model.Sum;
             order.Status = model.Status;

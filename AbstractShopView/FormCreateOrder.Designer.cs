@@ -73,6 +73,7 @@ namespace AbstractShopView
             this.comboBoxFurniture.Name = "comboBoxFurniture";
             this.comboBoxFurniture.Size = new System.Drawing.Size(292, 23);
             this.comboBoxFurniture.TabIndex = 3;
+            this.comboBoxFurniture.SelectedIndexChanged += new System.EventHandler(this.comboBoxFurniture_SelectedIndexChanged);
             // 
             // textBoxCount
             // 
@@ -80,6 +81,7 @@ namespace AbstractShopView
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(292, 23);
             this.textBoxCount.TabIndex = 4;
+            this.textBoxCount.TextChanged += new System.EventHandler(this.textBoxCount_TextChanged);
             // 
             // textBoxSum
             // 

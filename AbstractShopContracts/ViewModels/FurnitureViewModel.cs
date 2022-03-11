@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace AbstractShopContracts.ViewModels
 {
     /// <summary>
-    /// Изделие, изготавливаемое в магазине
+    /// Мебель, изготавливаемая в магазине
     /// </summary>
     public class FurnitureViewModel
     {

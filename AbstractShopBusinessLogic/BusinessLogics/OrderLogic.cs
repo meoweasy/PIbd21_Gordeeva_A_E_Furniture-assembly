@@ -18,17 +18,17 @@ namespace AbstractShopBusinessLogic.BusinessLogics
         {
             _orderStorage = orderStorage;
         }
-        public List<OrderViewModel> Read(OrderBindingModel sample)
+        public List<OrderViewModel> Read(OrderBindingModel model)
         {
-            if (sample == null)
+            if (model == null)
             {
                 return _orderStorage.GetFullList();
             }
-            if (sample.Id.HasValue)
+            if (model.Id.HasValue)
             {
-                return new List<OrderViewModel> { _orderStorage.GetElement(sample) };
+                return new List<OrderViewModel> { _orderStorage.GetElement(model) };
             }
-            return _orderStorage.GetFilteredList(sample);
+            return _orderStorage.GetFilteredList(model);
         }
         public void CreateOrder(CreateOrderBindingModel model)
         {

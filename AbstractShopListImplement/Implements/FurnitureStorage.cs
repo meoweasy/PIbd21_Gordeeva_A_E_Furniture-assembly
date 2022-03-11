@@ -32,7 +32,7 @@ namespace AbstractShopListImplement.Implements
             {
                 return null;
             }
-            List<FurnitureViewModel> result = new List<FurnitureViewModel>();
+            var result = new List<FurnitureViewModel>();
             foreach (var furniture in source.Furnitures)
             {
                 if (furniture.FurnitureName.Contains(model.FurnitureName))
@@ -41,17 +41,18 @@ namespace AbstractShopListImplement.Implements
                 }
             }
             return result;
+
         }
-        public FurnitureViewModel GetElement(FurnitureBindingModel sample)
+        public FurnitureViewModel GetElement(FurnitureBindingModel model)
         {
-            if (sample == null)
+            if (model == null)
             {
                 return null;
             }
             foreach (var furniture in source.Furnitures)
             {
-                if (furniture.Id == sample.Id || furniture.FurnitureName ==
-                sample.FurnitureName)
+                if (furniture.Id == model.Id || furniture.FurnitureName ==
+                model.FurnitureName)
                 {
                     return CreateModel(furniture);
                 }
@@ -60,11 +61,10 @@ namespace AbstractShopListImplement.Implements
         }
         public void Insert(FurnitureBindingModel model)
         {
-            Furniture tempFurniture = new Furniture
+            var tempFurniture = new Furniture
             {
                 Id = 1,
-                FurnitureDetails = new
-            Dictionary<int, int>()
+                FurnitureDetails = new Dictionary<int, int>()
             };
             foreach (var furniture in source.Furnitures)
             {
@@ -73,7 +73,7 @@ namespace AbstractShopListImplement.Implements
                     tempFurniture.Id = furniture.Id + 1;
                 }
             }
-            source.Furnitures.Add(CreateSample(model, tempFurniture));
+            source.Furnitures.Add(CreateModel(model, tempFurniture));
         }
         public void Update(FurnitureBindingModel model)
         {
@@ -89,7 +89,7 @@ namespace AbstractShopListImplement.Implements
             {
                 throw new Exception("Мебель не найдена");
             }
-            CreateSample(model, tempFurniture);
+            CreateModel(model, tempFurniture);
         }
         public void Delete(FurnitureBindingModel sample)
         {
@@ -103,30 +103,28 @@ namespace AbstractShopListImplement.Implements
             }
             throw new Exception("Мебель не найдена");
         }
-        private Furniture CreateSample(FurnitureBindingModel sample, Furniture furniture)
+        private Furniture CreateModel(FurnitureBindingModel model, Furniture furniture)
         {
-            furniture.FurnitureName = sample.FurnitureName;
-            furniture.Price = sample.Price;
+            furniture.FurnitureName = model.FurnitureName;
+            furniture.Price = model.Price;
             // удаляем убранные
             foreach (var key in furniture.FurnitureDetails.Keys.ToList())
             {
-                if (!sample.FurnitureDetails.ContainsKey(key))
+                if (!model.FurnitureDetails.ContainsKey(key))
                 {
                     furniture.FurnitureDetails.Remove(key);
                 }
             }
             // обновляем существуюущие и добавляем новые
-            foreach (var detail in sample.FurnitureDetails)
+            foreach (var detail in model.FurnitureDetails)
             {
                 if (furniture.FurnitureDetails.ContainsKey(detail.Key))
                 {
-                    furniture.FurnitureDetails[detail.Key] =
-                    sample.FurnitureDetails[detail.Key].Item2;
+                    furniture.FurnitureDetails[detail.Key] = model.FurnitureDetails[detail.Key].Item2;
                 }
                 else
                 {
-                    furniture.FurnitureDetails.Add(detail.Key,
-                    sample.FurnitureDetails[detail.Key].Item2);
+                    furniture.FurnitureDetails.Add(detail.Key,model.FurnitureDetails[detail.Key].Item2);
                 }
             }
             return furniture;
@@ -134,8 +132,7 @@ namespace AbstractShopListImplement.Implements
         private FurnitureViewModel CreateModel(Furniture furniture)
         {
             // требуется дополнительно получить список компонентов для изделия с названиями и их количество
-            Dictionary<int, (string, int)> furnitureDetails = new
-            Dictionary<int, (string, int)>();
+            var furnitureDetails = new Dictionary<int, (string, int)>();
             foreach (var pc in furniture.FurnitureDetails)
             {
                 string detailName = string.Empty;

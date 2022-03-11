@@ -14,9 +14,9 @@ namespace AbstractShopBusinessLogic.BusinessLogics
     public class DetailLogic : IDetailLogic
     {
         private readonly IDetailStorage _detailStorage;
-        public DetailLogic(IDetailStorage componentStorage)
+        public DetailLogic(IDetailStorage detailStorage)
         {
-            _detailStorage = componentStorage;
+            _detailStorage = detailStorage;
         }
         public List<DetailViewModel> Read(DetailBindingModel model)
         {
@@ -26,8 +26,7 @@ namespace AbstractShopBusinessLogic.BusinessLogics
             }
             if (model.Id.HasValue)
             {
-                return new List<DetailViewModel> {_detailStorage.GetElement(model)
-};
+                return new List<DetailViewModel> { _detailStorage.GetElement(model) };
             }
             return _detailStorage.GetFilteredList(model);
         }

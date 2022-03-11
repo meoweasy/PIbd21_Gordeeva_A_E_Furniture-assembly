@@ -21,9 +21,9 @@ namespace AbstractShopListImplement.Implements
         public List<DetailViewModel> GetFullList()
         {
             var result = new List<DetailViewModel>();
-            foreach (var component in source.Details)
+            foreach (var detail in source.Details)
             {
-                result.Add(CreateModel(component));
+                result.Add(CreateModel(detail));
             }
             return result;
         }
@@ -34,11 +34,11 @@ namespace AbstractShopListImplement.Implements
                 return null;
             }
             var result = new List<DetailViewModel>();
-            foreach (var component in source.Details)
+            foreach (var detail in source.Details)
             {
-                if (component.DetailName.Contains(model.DetailName))
+                if (detail.DetailName.Contains(model.DetailName))
                 {
-                    result.Add(CreateModel(component));
+                    result.Add(CreateModel(detail));
                 }
             }
             return result;
@@ -49,43 +49,43 @@ namespace AbstractShopListImplement.Implements
             {
                 return null;
             }
-            foreach (var component in source.Details)
+            foreach (var detail in source.Details)
             {
-                if (component.Id == model.Id || component.DetailName ==
+                if (detail.Id == model.Id || detail.DetailName ==
                model.DetailName)
                 {
-                    return CreateModel(component);
+                    return CreateModel(detail);
                 }
             }
             return null;
         }
         public void Insert(DetailBindingModel model)
         {
-            var tempComponent = new Detail { Id = 1 };
-            foreach (var component in source.Details)
+            var tempDetail = new Detail { Id = 1 };
+            foreach (var detail in source.Details)
             {
-                if (component.Id >= tempComponent.Id)
+                if (detail.Id >= tempDetail.Id)
                 {
-                    tempComponent.Id = component.Id + 1;
+                    tempDetail.Id = detail.Id + 1;
                 }
             }
-            source.Details.Add(CreateModel(model, tempComponent));
+            source.Details.Add(CreateModel(model, tempDetail));
         }
         public void Update(DetailBindingModel model)
         {
-            Detail tempComponent = null;
-            foreach (var component in source.Details)
+            Detail tempDetail = null;
+            foreach (var detail in source.Details)
             {
-                if (component.Id == model.Id)
+                if (detail.Id == model.Id)
                 {
-                    tempComponent = component;
+                    tempDetail = detail;
                 }
             }
-            if (tempComponent == null)
+            if (tempDetail == null)
             {
                 throw new Exception("Элемент не найден");
             }
-            CreateModel(model, tempComponent);
+            CreateModel(model, tempDetail);
         }
         public void Delete(DetailBindingModel model)
         {
@@ -100,17 +100,17 @@ namespace AbstractShopListImplement.Implements
             throw new Exception("Элемент не найден");
         }
         private static Detail CreateModel(DetailBindingModel model, Detail
-component)
+detail)
         {
-            component.DetailName = model.DetailName;
-            return component;
+            detail.DetailName = model.DetailName;
+            return detail;
         }
-        private static DetailViewModel CreateModel(Detail component)
+        private static DetailViewModel CreateModel(Detail detail)
         {
             return new DetailViewModel
             {
-                Id = component.Id,
-                DetailName = component.DetailName
+                Id = detail.Id,
+                DetailName = detail.DetailName
             };
         }
     }
