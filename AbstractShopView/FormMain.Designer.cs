@@ -85,7 +85,7 @@ namespace AbstractShopView
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 25;
-            this.dataGridView.Size = new System.Drawing.Size(597, 243);
+            this.dataGridView.Size = new System.Drawing.Size(641, 243);
             this.dataGridView.TabIndex = 1;
             // 
             // buttonCreateOrder
