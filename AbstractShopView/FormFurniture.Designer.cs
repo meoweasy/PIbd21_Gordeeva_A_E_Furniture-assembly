@@ -35,15 +35,15 @@ namespace AbstractShopView
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComponentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonRef = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.buttonUpd = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DetailName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -100,38 +100,17 @@ namespace AbstractShopView
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.ComponentName,
+            this.DetailName,
             this.Count});
-            this.dataGridView.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView.Location = new System.Drawing.Point(0, 21);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowTemplate.Height = 25;
-            this.dataGridView.Size = new System.Drawing.Size(380, 311);
+            this.dataGridView.Size = new System.Drawing.Size(394, 311);
             this.dataGridView.TabIndex = 5;
-            // 
-            // ID
-            // 
-            this.ID.FillWeight = 20F;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            this.ID.Width = 5;
-            // 
-            // ComponentName
-            // 
-            this.ComponentName.HeaderText = "Компонент";
-            this.ComponentName.Name = "ComponentName";
-            this.ComponentName.Width = 250;
-            // 
-            // Count
-            // 
-            this.Count.HeaderText = "Количество";
-            this.Count.Name = "Count";
-            this.Count.Width = 127;
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(392, 169);
+            this.buttonRef.Location = new System.Drawing.Point(400, 169);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(106, 28);
             this.buttonRef.TabIndex = 4;
@@ -141,7 +120,7 @@ namespace AbstractShopView
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(392, 135);
+            this.buttonDel.Location = new System.Drawing.Point(400, 135);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(106, 28);
             this.buttonDel.TabIndex = 3;
@@ -151,7 +130,7 @@ namespace AbstractShopView
             // 
             // buttonUpd
             // 
-            this.buttonUpd.Location = new System.Drawing.Point(392, 101);
+            this.buttonUpd.Location = new System.Drawing.Point(400, 101);
             this.buttonUpd.Name = "buttonUpd";
             this.buttonUpd.Size = new System.Drawing.Size(106, 28);
             this.buttonUpd.TabIndex = 2;
@@ -161,7 +140,7 @@ namespace AbstractShopView
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(392, 67);
+            this.buttonAdd.Location = new System.Drawing.Point(400, 67);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(106, 28);
             this.buttonAdd.TabIndex = 1;
@@ -188,6 +167,24 @@ namespace AbstractShopView
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // Id
+            // 
+            this.ID.HeaderText = "Id";
+            this.ID.Name = "Id";
+            this.ID.Visible = false;
+            this.ID.Width = 250;
+            // 
+            // DetailName
+            // 
+            this.DetailName.HeaderText = "Компонент";
+            this.DetailName.Name = "DetailName";
+            this.DetailName.Width = 250;
+            // 
+            // Count
+            // 
+            this.Count.HeaderText = "Количество";
+            this.Count.Name = "Count";
             // 
             // FormFurniture
             // 
@@ -219,14 +216,14 @@ namespace AbstractShopView
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ComponentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Count;
         private System.Windows.Forms.Button buttonRef;
         private System.Windows.Forms.Button buttonDel;
         private System.Windows.Forms.Button buttonUpd;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DetailName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Count;
     }
 }

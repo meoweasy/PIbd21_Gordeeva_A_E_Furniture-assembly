@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AbstractShopBusinessLogic\AbstractShopBusinessLogic.csproj" />
-    <ProjectReference Include="..\AbstractShopListImplement\AbstractShopListImplement.csproj" />
+    <ProjectReference Include="..\AbstractShopBusinessLogic\FurnitureAssemblyBusinessLogic.csproj" />
+    <ProjectReference Include="..\AbstractShopListImplement\FurnitureAssemblyListImplement.csproj" />
   </ItemGroup>
 
 </Project>
