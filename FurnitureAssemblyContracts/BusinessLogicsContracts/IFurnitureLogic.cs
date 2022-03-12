@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FurnitureAssemblyContracts.BindingModels;
+using FurnitureAssemblyContracts.ViewModels;
+
+
+namespace FurnitureAssemblyContracts.BusinessLogicsContracts
+{
+    public interface IFurnitureLogic
+    {
+        List<FurnitureViewModel> Read(FurnitureBindingModel model);
+        void CreateOrUpdate(FurnitureBindingModel model);
+        void Delete(FurnitureBindingModel model);
+    }
+}

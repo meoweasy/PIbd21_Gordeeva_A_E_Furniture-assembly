@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AbstractShopContracts": {
+      "commandName": "Executable"
+    },
+    "FurnitureAssemblyView": {
+      "commandName": "Project"
+    }
+  }
+}

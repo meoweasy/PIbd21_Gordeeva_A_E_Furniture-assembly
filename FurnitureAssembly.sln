@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyContracts", "AbstractShopContracts\FurnitureAssemblyContracts.csproj", "{528D2ADC-DD20-4E88-B5C3-21BCB49DB035}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyContracts", "FurnitureAssemblyContracts\FurnitureAssemblyContracts.csproj", "{528D2ADC-DD20-4E88-B5C3-21BCB49DB035}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyBusinessLogic", "AbstractShopBusinessLogic\FurnitureAssemblyBusinessLogic.csproj", "{172AC617-0728-4BBA-8B3A-D252FD0FEEDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyBusinessLogic", "FurnitureAssemblyBusinessLogic\FurnitureAssemblyBusinessLogic.csproj", "{172AC617-0728-4BBA-8B3A-D252FD0FEEDC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyListImplement", "AbstractShopListImplement\FurnitureAssemblyListImplement.csproj", "{F624ABD3-4CE3-46D6-9B49-6061A18F2B61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyListImplement", "FurnitureAssemblyListImplement\FurnitureAssemblyListImplement.csproj", "{F624ABD3-4CE3-46D6-9B49-6061A18F2B61}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyView", "AbstractShopView\FurnitureAssemblyView.csproj", "{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyView", "FurnitureAssemblyView\FurnitureAssemblyView.csproj", "{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
