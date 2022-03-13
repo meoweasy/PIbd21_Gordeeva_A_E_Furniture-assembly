@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyListImplem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyView", "FurnitureAssemblyView\FurnitureAssemblyView.csproj", "{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureAssemblyFileImplement", "FurnitureAssemblyFileImplement\FurnitureAssemblyFileImplement.csproj", "{56513CFE-A941-4B24-83F3-5E442BA09263}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCB2E66F-EE52-4286-A5BA-98F004D0DAC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56513CFE-A941-4B24-83F3-5E442BA09263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56513CFE-A941-4B24-83F3-5E442BA09263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56513CFE-A941-4B24-83F3-5E442BA09263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56513CFE-A941-4B24-83F3-5E442BA09263}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
