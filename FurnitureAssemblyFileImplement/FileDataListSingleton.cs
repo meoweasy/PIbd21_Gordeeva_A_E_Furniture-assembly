@@ -31,18 +31,18 @@ namespace FurnitureAssemblyFileImplement
             }
             return instance;
         }
-        ~FileDataListSingleton()
+        public static void SaveData()
         {
-            SaveDetails();
-            SaveOrders();
-            SaveFurnitures();
+            instance.SaveDetails();
+            instance.SaveOrders();
+            instance.SaveFurnitures();
         }
         private List<Detail> LoadDetails()
         {
             var list = new List<Detail>();
             if (File.Exists(DetailFileName))
             {
-                XDocument xDocument = XDocument.Load(DetailFileName);
+                var xDocument = XDocument.Load(DetailFileName);
                 var xElements = xDocument.Root.Elements("Detail").ToList();
                 foreach (var elem in xElements)
                 {
@@ -60,19 +60,19 @@ namespace FurnitureAssemblyFileImplement
             var list = new List<Order>();
             if (File.Exists(OrderFileName))
             {
-                XDocument xDocument = XDocument.Load(OrderFileName);
+                var xDocument = XDocument.Load(OrderFileName);
                 var xElements = xDocument.Root.Elements("Order").ToList();
                 foreach (var elem in xElements)
                 {  
                     list.Add(new Order
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
-                        FurnitureId = Convert.ToInt32(elem.Attribute("FurnitureId").Value),
+                        FurnitureId = Convert.ToInt32(elem.Element("FurnitureId").Value),
                         Count = Convert.ToInt32(elem.Element("Count").Value),
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
                         Status = (OrderStatus)Convert.ToInt32(elem.Element("Status").Value),
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
-                        DateImplement = String.IsNullOrEmpty(elem.Element("DateImplement").Value) ? DateTime.MinValue : Convert.ToDateTime(elem.Element("DateImplement").Value),
+                        DateImplement = Convert.ToDateTime(elem.Element("DateImplement").Value),
                     });
                 }
             }
@@ -83,7 +83,7 @@ namespace FurnitureAssemblyFileImplement
             var list = new List<Furniture>();
             if (File.Exists(FurnitureFileName))
             {
-                XDocument xDocument = XDocument.Load(FurnitureFileName);
+                var xDocument = XDocument.Load(FurnitureFileName);
                 var xElements = xDocument.Root.Elements("Furniture").ToList();
                 foreach (var elem in xElements)
                 {
@@ -127,9 +127,9 @@ namespace FurnitureAssemblyFileImplement
                 var xElement = new XElement("Orders");
                 foreach (var order in Orders)
                 {
-                    xElement.Add(new XElement("Orders",
+                    xElement.Add(new XElement("Order",
                     new XAttribute("Id", order.Id),
-                    new XAttribute("FurnitureId", order.FurnitureId),
+                    new XElement("FurnitureId", order.FurnitureId),
                     new XElement("Count", order.Count),
                     new XElement("Sum", order.Sum),
                     new XElement("Status", (int)order.Status),
@@ -137,7 +137,7 @@ namespace FurnitureAssemblyFileImplement
                     new XElement("DateImplement", order.DateImplement)
                     ));
                 }
-                XDocument xDocument = new XDocument(xElement);
+                var xDocument = new XDocument(xElement);
                 xDocument.Save(OrderFileName);
             }
         }
@@ -161,7 +161,7 @@ namespace FurnitureAssemblyFileImplement
                      new XElement("Price", furniture.Price),
                      detElement));
                 }
-                XDocument xDocument = new XDocument(xElement);
+                var xDocument = new XDocument(xElement);
                 xDocument.Save(FurnitureFileName);
             }
         }
