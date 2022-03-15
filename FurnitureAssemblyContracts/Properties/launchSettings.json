@@ -1,10 +1,8 @@
 {
   "profiles": {
-    "AbstractShopContracts": {
-      "commandName": "Executable"
-    },
     "FurnitureAssemblyView": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "workingDirectory": "D:\\VSпроекты\\FurnitureAssembly\\FurnitureAssemblyView"
     }
   }
 }
