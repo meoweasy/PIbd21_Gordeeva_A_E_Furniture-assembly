@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FurnitureAssemblyFileImplement.Migrations
+namespace FurnitureAssemblyDatabaseImplement.Migrations
 {
     [DbContext(typeof(FurnitureAssemblyDatabase))]
     partial class FurnitureAssemblyDatabaseModelSnapshot : ModelSnapshot

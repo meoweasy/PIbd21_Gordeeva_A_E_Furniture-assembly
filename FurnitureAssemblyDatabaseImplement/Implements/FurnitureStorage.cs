@@ -47,8 +47,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             var furniture = context.Furnitures
             .Include(rec => rec.FurnitureDetails)
             .ThenInclude(rec => rec.Detail)
-            .FirstOrDefault(rec => rec.FurnitureName == model.FurnitureName ||
-            rec.Id == model.Id);
+            .FirstOrDefault(rec => rec.FurnitureName == model.FurnitureName || rec.Id == model.Id);
             return furniture != null ? CreateModel(furniture) : null;
         }
         public void Insert(FurnitureBindingModel model)
@@ -57,9 +56,14 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             using var transaction = context.Database.BeginTransaction();
             try
             {
-                context.Furnitures.Add(CreateModel(model, new Furniture(),
-                context));
+                Furniture furniture = new Furniture()
+                {
+                    FurnitureName = model.FurnitureName,
+                    Price = model.Price
+                };
+                context.Furnitures.Add(furniture);
                 context.SaveChanges();
+                CreateModel(model, furniture, context);
                 transaction.Commit();
             }
             catch

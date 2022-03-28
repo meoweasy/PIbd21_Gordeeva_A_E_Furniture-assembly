@@ -37,7 +37,6 @@ namespace FurnitureAssemblyView
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(Container.Resolve<FormMain>());
-            FurnitureAssemblyFileImplement.FileDataListSingleton.SaveData();
         }
 
         private static IUnityContainer BuildUnityContainer()

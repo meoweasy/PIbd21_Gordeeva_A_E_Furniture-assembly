@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace FurnitureAssemblyFileImplement.Migrations
+namespace FurnitureAssemblyDatabaseImplement.Migrations
 {
     public partial class InitialCreate : Migration
     {
