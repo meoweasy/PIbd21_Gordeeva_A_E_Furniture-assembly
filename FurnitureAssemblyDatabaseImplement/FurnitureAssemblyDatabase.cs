@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FurnitureAssemblyDatabaseImplement.Models;
 using Microsoft.EntityFrameworkCore;
-using FurnitureAssemblyDatabaseImplement.Models;
+
 
 namespace FurnitureAssemblyDatabaseImplement
 {
@@ -14,7 +10,7 @@ namespace FurnitureAssemblyDatabaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=HOME\SQLEXPRESS;Initial
+                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-O76UPIGE\SQLEXPRESS;Initial
 Catalog=FurnitureAssemblyDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
             }
             base.OnConfiguring(optionsBuilder);

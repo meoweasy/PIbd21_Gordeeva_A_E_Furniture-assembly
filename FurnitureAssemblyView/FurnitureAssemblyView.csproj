@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FurnitureAssemblyDatabaseImplement\FurnitureAssemblyDatabaseImplement.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyFileImplement\FurnitureAssemblyFileImplement.csproj" />
     <ProjectReference Include="D:\VSпроекты\FurnitureAssembly\FurnitureAssemblyBusinessLogic\FurnitureAssemblyBusinessLogic.csproj" />
   </ItemGroup>

@@ -8,7 +8,8 @@ using Unity.Lifetime;
 using FurnitureAssemblyBusinessLogic.BusinessLogics;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
 using FurnitureAssemblyContracts.StoragesContacts;
-using FurnitureAssemblyFileImplement.Implements;
+using FurnitureAssemblyDatabaseImplement.Implements;
+
 
 namespace FurnitureAssemblyView
 {
