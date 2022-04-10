@@ -33,16 +33,16 @@ namespace FurnitureAssemblyView
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.КомпонентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ИзделияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DetailFurnitureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.buttonTakeOrderInWork = new System.Windows.Forms.Button();
             this.buttonOrderReady = new System.Windows.Forms.Button();
             this.buttonIssuedOrder = new System.Windows.Forms.Button();
             this.buttonRef = new System.Windows.Forms.Button();
-            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокДеталейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.деталиПоФурнитурамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +51,7 @@ namespace FurnitureAssemblyView
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
-            this.отчетыToolStripMenuItem});
+            this.ReportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(863, 24);
@@ -80,6 +80,37 @@ namespace FurnitureAssemblyView
             this.ИзделияToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.ИзделияToolStripMenuItem.Text = "Изделия";
             this.ИзделияToolStripMenuItem.Click += new System.EventHandler(this.ИзделияToolStripMenuItem_Click_1);
+            // 
+            // ReportToolStripMenuItem
+            // 
+            this.ReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DetailsToolStripMenuItem,
+            this.DetailFurnitureToolStripMenuItem,
+            this.OrdersToolStripMenuItem});
+            this.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem";
+            this.ReportToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.ReportToolStripMenuItem.Text = "Отчеты";
+            // 
+            // DetailsToolStripMenuItem
+            // 
+            this.DetailsToolStripMenuItem.Name = "DetailsToolStripMenuItem";
+            this.DetailsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.DetailsToolStripMenuItem.Text = "Список деталей";
+            this.DetailsToolStripMenuItem.Click += new System.EventHandler(this.DetailsToolStripMenuItem_Click);
+            // 
+            // DetailFurnitureToolStripMenuItem
+            // 
+            this.DetailFurnitureToolStripMenuItem.Name = "DetailFurnitureToolStripMenuItem";
+            this.DetailFurnitureToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.DetailFurnitureToolStripMenuItem.Text = "Детали по фурнитурам";
+            this.DetailFurnitureToolStripMenuItem.Click += new System.EventHandler(this.DetailFurnitureToolStripMenuItem_Click);
+            // 
+            // OrdersToolStripMenuItem
+            // 
+            this.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem";
+            this.OrdersToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.OrdersToolStripMenuItem.Text = "Список заказов";
+            this.OrdersToolStripMenuItem.Click += new System.EventHandler(this.OrdersToolStripMenuItem_Click);
             // 
             // dataGridView
             // 
@@ -143,34 +174,6 @@ namespace FurnitureAssemblyView
             this.buttonRef.UseVisualStyleBackColor = true;
             this.buttonRef.Click += new System.EventHandler(this.buttonRef_Click);
             // 
-            // отчетыToolStripMenuItem
-            // 
-            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.списокДеталейToolStripMenuItem,
-            this.деталиПоФурнитурамToolStripMenuItem,
-            this.списокЗаказовToolStripMenuItem});
-            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
-            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.отчетыToolStripMenuItem.Text = "Отчеты";
-            // 
-            // списокДеталейToolStripMenuItem
-            // 
-            this.списокДеталейToolStripMenuItem.Name = "списокДеталейToolStripMenuItem";
-            this.списокДеталейToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.списокДеталейToolStripMenuItem.Text = "Список деталей";
-            // 
-            // деталиПоФурнитурамToolStripMenuItem
-            // 
-            this.деталиПоФурнитурамToolStripMenuItem.Name = "деталиПоФурнитурамToolStripMenuItem";
-            this.деталиПоФурнитурамToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.деталиПоФурнитурамToolStripMenuItem.Text = "Детали по фурнитурам";
-            // 
-            // списокЗаказовToolStripMenuItem
-            // 
-            this.списокЗаказовToolStripMenuItem.Name = "списокЗаказовToolStripMenuItem";
-            this.списокЗаказовToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.списокЗаказовToolStripMenuItem.Text = "Список заказов";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -207,9 +210,9 @@ namespace FurnitureAssemblyView
         private System.Windows.Forms.Button buttonRef;
         private System.Windows.Forms.ToolStripMenuItem КомпонентыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ИзделияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокДеталейToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem деталиПоФурнитурамToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокЗаказовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DetailFurnitureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OrdersToolStripMenuItem;
     }
 }
