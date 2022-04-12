@@ -15,12 +15,13 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
         public List<FurnitureViewModel> GetFullList()
         {
             using var context = new FurnitureAssemblyDatabase();
-            return context.Furnitures
+            var tmp = context.Furnitures
             .Include(rec => rec.FurnitureDetails)
             .ThenInclude(rec => rec.Detail)
             .ToList()
             .Select(CreateModel)
             .ToList();
+            return tmp;
         }
         public List<FurnitureViewModel> GetFilteredList(FurnitureBindingModel model)
         {
@@ -151,8 +152,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                 FurnitureName = furniture.FurnitureName,
                 Price = furniture.Price,
                 FurnitureDetails = furniture.FurnitureDetails
-            .ToDictionary(recPC => recPC.DetailId,
-            recPC => (recPC.Detail?.DetailName, recPC.Count))
+                .ToDictionary(recPC => recPC.DetailId, recPC => (recPC.Detail?.DetailName, recPC.Count))
             };
         }
     }

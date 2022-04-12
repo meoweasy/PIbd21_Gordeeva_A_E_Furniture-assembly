@@ -28,7 +28,7 @@ namespace FurnitureAssemblyFileImplement.Implements
                 return null;
             }
             return source.Orders
-            .Where(rec => rec.DateCreate == model.DateCreate)
+            .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date))
             .Select(CreateModel)
             .ToList();
         }

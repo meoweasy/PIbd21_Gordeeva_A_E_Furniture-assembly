@@ -8,8 +8,8 @@ namespace FurnitureAssemblyContracts.ViewModels
 {
     public class ReportFurnitureDetailViewModel
     {
-        public string DetailName { get; set; }
+        public string FurnitureName { get; set; }
         public int TotalCount { get; set; }
-        public List<Tuple<string, int>> Furnitures { get; set; }
+        public List<Tuple<string, int>> Details { get; set; }
     }
 }

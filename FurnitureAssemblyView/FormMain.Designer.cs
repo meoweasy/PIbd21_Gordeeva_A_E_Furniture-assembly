@@ -94,21 +94,21 @@ namespace FurnitureAssemblyView
             // DetailsToolStripMenuItem
             // 
             this.DetailsToolStripMenuItem.Name = "DetailsToolStripMenuItem";
-            this.DetailsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.DetailsToolStripMenuItem.Text = "Список деталей";
+            this.DetailsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.DetailsToolStripMenuItem.Text = "Список изделий";
             this.DetailsToolStripMenuItem.Click += new System.EventHandler(this.DetailsToolStripMenuItem_Click);
             // 
             // DetailFurnitureToolStripMenuItem
             // 
             this.DetailFurnitureToolStripMenuItem.Name = "DetailFurnitureToolStripMenuItem";
-            this.DetailFurnitureToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.DetailFurnitureToolStripMenuItem.Text = "Детали по фурнитурам";
+            this.DetailFurnitureToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.DetailFurnitureToolStripMenuItem.Text = "Изделия по деталям";
             this.DetailFurnitureToolStripMenuItem.Click += new System.EventHandler(this.DetailFurnitureToolStripMenuItem_Click);
             // 
             // OrdersToolStripMenuItem
             // 
             this.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem";
-            this.OrdersToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.OrdersToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.OrdersToolStripMenuItem.Text = "Список заказов";
             this.OrdersToolStripMenuItem.Click += new System.EventHandler(this.OrdersToolStripMenuItem_Click);
             // 

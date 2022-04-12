@@ -1,4 +1,5 @@
-﻿namespace FurnitureAssemblyView
+﻿
+namespace FurnitureAssemblyView
 {
     partial class FormReportFurnitureDetails
     {
@@ -28,47 +29,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ButtonSaveToExcel = new System.Windows.Forms.Button();
-            this.dataGridViewReportFurnitureDetails = new System.Windows.Forms.DataGridView();
-            this.DetailName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonSaveToExcel = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportFurnitureDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // ButtonSaveToExcel
+            // buttonSaveToExcel
             // 
-            this.ButtonSaveToExcel.Location = new System.Drawing.Point(12, 12);
-            this.ButtonSaveToExcel.Name = "ButtonSaveToExcel";
-            this.ButtonSaveToExcel.Size = new System.Drawing.Size(240, 23);
-            this.ButtonSaveToExcel.TabIndex = 0;
-            this.ButtonSaveToExcel.Text = "Сохранить в Excel";
-            this.ButtonSaveToExcel.UseVisualStyleBackColor = true;
-            this.ButtonSaveToExcel.Click += new System.EventHandler(this.ButtonSaveToExcel_Click);
+            this.buttonSaveToExcel.Location = new System.Drawing.Point(12, 12);
+            this.buttonSaveToExcel.Name = "buttonSaveToExcel";
+            this.buttonSaveToExcel.Size = new System.Drawing.Size(263, 23);
+            this.buttonSaveToExcel.TabIndex = 0;
+            this.buttonSaveToExcel.Text = "Сохранить в Excel";
+            this.buttonSaveToExcel.UseVisualStyleBackColor = true;
+            this.buttonSaveToExcel.Click += new System.EventHandler(this.buttonSaveToExcel_Click);
             // 
-            // dataGridViewReportFurnitureDetails
+            // dataGridView
             // 
-            this.dataGridViewReportFurnitureDetails.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridViewReportFurnitureDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewReportFurnitureDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DetailName,
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FurnitureName,
+            this.Details,
             this.Count});
-            this.dataGridViewReportFurnitureDetails.Location = new System.Drawing.Point(12, 41);
-            this.dataGridViewReportFurnitureDetails.Name = "dataGridViewReportFurnitureDetails";
-            this.dataGridViewReportFurnitureDetails.RowTemplate.Height = 25;
-            this.dataGridViewReportFurnitureDetails.Size = new System.Drawing.Size(344, 397);
-            this.dataGridViewReportFurnitureDetails.TabIndex = 1;
-            // 
-            // DetailName
-            // 
-            this.DetailName.HeaderText = "Деталь";
-            this.DetailName.Name = "DetailName";
+            this.dataGridView.Location = new System.Drawing.Point(12, 41);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowTemplate.Height = 25;
+            this.dataGridView.Size = new System.Drawing.Size(359, 397);
+            this.dataGridView.TabIndex = 1;
             // 
             // FurnitureName
             // 
-            this.FurnitureName.HeaderText = "Фурнитура";
+            this.FurnitureName.HeaderText = "Изделие";
             this.FurnitureName.Name = "FurnitureName";
+            // 
+            // Details
+            // 
+            this.Details.HeaderText = "Детали";
+            this.Details.Name = "Details";
             // 
             // Count
             // 
@@ -79,23 +79,23 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 450);
-            this.Controls.Add(this.dataGridViewReportFurnitureDetails);
-            this.Controls.Add(this.ButtonSaveToExcel);
+            this.ClientSize = new System.Drawing.Size(383, 450);
+            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.buttonSaveToExcel);
             this.Name = "FormReportFurnitureDetails";
-            this.Text = "Детали по фурнитурам";
+            this.Text = "FormReportFurnitureDetailcs";
             this.Load += new System.EventHandler(this.FormReportFurnitureDetails_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportFurnitureDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button ButtonSaveToExcel;
-        private System.Windows.Forms.DataGridView dataGridViewReportFurnitureDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DetailName;
+        private System.Windows.Forms.Button buttonSaveToExcel;
+        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Details;
         private System.Windows.Forms.DataGridViewTextBoxColumn Count;
     }
 }

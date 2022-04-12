@@ -21,4 +21,10 @@
     <ProjectReference Include="D:\VSпроекты\FurnitureAssembly\FurnitureAssemblyBusinessLogic\FurnitureAssemblyBusinessLogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ReportOrders.rdlc">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

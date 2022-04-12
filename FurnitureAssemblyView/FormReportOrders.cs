@@ -16,8 +16,9 @@ namespace FurnitureAssemblyView
 {
     public partial class FormReportOrders : Form
     {
-        private readonly ReportViewer reportViewer;
         private readonly IReportLogic _logic;
+        private readonly ReportViewer reportViewer;
+
         public FormReportOrders(IReportLogic logic)
         {
             InitializeComponent();
@@ -29,8 +30,9 @@ namespace FurnitureAssemblyView
             reportViewer.LocalReport.LoadReportDefinition(new
            FileStream("ReportOrders.rdlc", FileMode.Open));
             Controls.Clear();
-            Controls.Add(reportViewer);
             Controls.Add(panelReportOrders);
+            Controls.Add(reportViewer);
+            Controls.Add(panel3);
         }
 
         private void buttonMake_Click(object sender, EventArgs e)
@@ -51,11 +53,7 @@ namespace FurnitureAssemblyView
                 var source = new ReportDataSource("DataSetOrders", dataSource);
                 reportViewer.LocalReport.DataSources.Clear();
                 reportViewer.LocalReport.DataSources.Add(source);
-                var parameters = new[] { new ReportParameter("ReportParameterPeriod",
- "c " +
-dateTimePickerFrom.Value.ToShortDateString() +
- " по " +
-dateTimePickerTo.Value.ToShortDateString()) };
+                var parameters = new[] { new ReportParameter("ReportParameterPeriod", "c " + dateTimePickerFrom.Value.ToShortDateString() + " по " + dateTimePickerTo.Value.ToShortDateString()) };
                 reportViewer.LocalReport.SetParameters(parameters);
                 reportViewer.RefreshReport();
             }

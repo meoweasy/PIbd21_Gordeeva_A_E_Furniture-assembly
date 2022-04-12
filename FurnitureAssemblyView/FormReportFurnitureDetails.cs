@@ -21,14 +21,15 @@ namespace FurnitureAssemblyView
             _logic = logic;
         }
 
-        private void ButtonSaveToExcel_Click(object sender, EventArgs e)
+        private void buttonSaveToExcel_Click(object sender, EventArgs e)
         {
             using var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    _logic.SaveFurnitureDetailToExcelFile(new ReportBindingModel
+                    _logic.SaveFurnitureDetailToExcelFile(new
+                    ReportBindingModel
                     {
                         FileName = dialog.FileName
                     });
@@ -41,7 +42,6 @@ namespace FurnitureAssemblyView
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
 
         private void FormReportFurnitureDetails_Load(object sender, EventArgs e)
@@ -51,19 +51,16 @@ namespace FurnitureAssemblyView
                 var dict = _logic.GetFurnitureDetail();
                 if (dict != null)
                 {
-                    dataGridViewReportFurnitureDetails.Rows.Clear();
+                    dataGridView.Rows.Clear();
                     foreach (var elem in dict)
                     {
-                        dataGridViewReportFurnitureDetails.Rows.Add(new object[] { elem.DetailName, "", ""
-});
-                        foreach (var listElem in elem.Furnitures)
+                        dataGridView.Rows.Add(new object[] { elem.FurnitureName, "", ""});
+                        foreach (var listElem in elem.Details)
                         {
-                            dataGridViewReportFurnitureDetails.Rows.Add(new object[] { "", listElem.Item1,
-listElem.Item2 });
+                            dataGridView.Rows.Add(new object[] { "", listElem.Item1,listElem.Item2 });
                         }
-                        dataGridViewReportFurnitureDetails.Rows.Add(new object[] { "Итого", "", elem.TotalCount
-});
-                        dataGridViewReportFurnitureDetails.Rows.Add(Array.Empty<object>());
+                        dataGridView.Rows.Add(new object[] { "Итого", "", elem.TotalCount});
+                        dataGridView.Rows.Add(Array.Empty<object>());
                     }
                 }
             }
@@ -72,7 +69,6 @@ listElem.Item2 });
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
             }
-
         }
     }
 }

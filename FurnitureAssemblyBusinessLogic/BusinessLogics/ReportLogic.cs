@@ -39,26 +39,20 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
         /// <returns></returns>
         public List<ReportFurnitureDetailViewModel> GetFurnitureDetail()
         {
-            var details = _detailStorage.GetFullList();
             var furnitures = _furnitureStorage.GetFullList();
             var list = new List<ReportFurnitureDetailViewModel>();
-            foreach (var detail in details)
+            foreach (var furniture in furnitures)
             {
                 var record = new ReportFurnitureDetailViewModel
                 {
-                    DetailName = detail.DetailName,
-                    Furnitures = new List<Tuple<string, int>>(),
+                    FurnitureName = furniture.FurnitureName,
+                    Details = new List<Tuple<string, int>>(),
                     TotalCount = 0
                 };
-                foreach (var furniture in furnitures)
+                foreach (var detail in furniture.FurnitureDetails)
                 {
-                    if (furniture.FurnitureDetails.ContainsKey(detail.Id))
-                    {
-                        record.Furnitures.Add(new Tuple<string, int>(furniture.FurnitureName,
-                       furniture.FurnitureDetails[detail.Id].Item2));
-                        record.TotalCount +=
-                       furniture.FurnitureDetails[detail.Id].Item2;
-                    }
+                    record.Details.Add(new Tuple<string, int>(detail.Value.Item1, detail.Value.Item2));
+                    record.TotalCount += detail.Value.Item2;
                 }
                 list.Add(record);
             }
@@ -73,8 +67,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
         {
             return _orderStorage.GetFilteredList(new OrderBindingModel
             {
-                DateFrom =
-           model.DateFrom,
+                DateFrom = model.DateFrom,
                 DateTo = model.DateTo
             })
             .Select(x => new ReportOrdersViewModel
@@ -97,7 +90,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 FileName = model.FileName,
                 Title = "Список деталей",
-                Details = _detailStorage.GetFullList()
+                Furnitures = _furnitureStorage.GetFullList()
             });
         }
         /// <summary>
@@ -109,7 +102,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             _saveToExcel.CreateReport(new ExcelInfo
             {
                 FileName = model.FileName,
-                Title = "Список деталей",
+                Title = "Список изделий",
                 FurnitureDetails = GetFurnitureDetail()
             });
         }
