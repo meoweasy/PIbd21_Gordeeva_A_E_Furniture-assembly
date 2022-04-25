@@ -20,9 +20,9 @@ namespace FurnitureAssemblyListImplement.Implements
         public List<FurnitureViewModel> GetFullList()
         {
             List<FurnitureViewModel> result = new List<FurnitureViewModel>();
-            foreach (var detail in source.Furnitures)
+            foreach (var furniture in source.Furnitures)
             {
-                result.Add(CreateModel(detail));
+                result.Add(CreateModel(furniture));
             }
             return result;
         }

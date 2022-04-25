@@ -17,11 +17,13 @@ namespace FurnitureAssemblyFileImplement
         public List<Detail> Details { get; set; }
         public List<Order> Orders { get; set; }
         public List<Furniture> Furnitures { get; set; }
+        public List<Client> Clients { get; set; }
         private FileDataListSingleton()
         {
             Details = LoadDetails();
             Orders = LoadOrders();
             Furnitures = LoadFurnitures();
+            Clients = new List<Client>();
         }
         public static FileDataListSingleton GetInstance()
         {
