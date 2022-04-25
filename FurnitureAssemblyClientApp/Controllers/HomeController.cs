@@ -25,9 +25,9 @@ namespace FurnitureAssemblyClientApp.Controllers
             {
                 return Redirect("~/Home/Enter");
             }
-            return
-            View(APIClient.GetRequest<List<OrderViewModel>>($"api/main/getorders?clientId={Program.Client.Id}"));
+            return View(APIClient.GetRequest<List<OrderViewModel>>($"api/main/getorders?clientId={Program.Client.Id}"));
         }
+
         [HttpGet]
         public IActionResult Privacy()
         {
@@ -37,14 +37,13 @@ namespace FurnitureAssemblyClientApp.Controllers
             }
             return View(Program.Client);
         }
+
         [HttpPost]
         public void Privacy(string login, string password, string fio)
         {
-            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password)
-            && !string.IsNullOrEmpty(fio))
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(fio))
             {
-                APIClient.PostRequest("api/client/updatedata", new
-                ClientBindingModel
+                APIClient.PostRequest("api/client/updatedata", new ClientBindingModel
                 {
                     Id = Program.Client.Id,
                     ClientFIO = fio,
@@ -59,27 +58,25 @@ namespace FurnitureAssemblyClientApp.Controllers
             }
             throw new Exception("Введите логин, пароль и ФИО");
         }
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore
-        = true)]
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel
-            {
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-            });
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
         [HttpGet]
         public IActionResult Enter()
         {
             return View();
         }
+
         [HttpPost]
         public void Enter(string login, string password)
         {
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
             {
-                Program.Client =
-                APIClient.GetRequest<ClientViewModel>($"api/client/login?login={login}&password={password}");
+                Program.Client = APIClient.GetRequest<ClientViewModel>($"api/client/login?login={login}&password={password}");
                 if (Program.Client == null)
                 {
                     throw new Exception("Неверный логин/пароль");
@@ -89,19 +86,19 @@ namespace FurnitureAssemblyClientApp.Controllers
             }
             throw new Exception("Введите логин, пароль");
         }
+
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
         public void Register(string login, string password, string fio)
         {
-            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password)
-            && !string.IsNullOrEmpty(fio))
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(fio))
             {
-                APIClient.PostRequest("api/client/register", new
-                ClientBindingModel
+                APIClient.PostRequest("api/client/register", new ClientBindingModel
                 {
                     ClientFIO = fio,
                     Email = login,
@@ -112,12 +109,14 @@ namespace FurnitureAssemblyClientApp.Controllers
             }
             throw new Exception("Введите логин, пароль и ФИО");
         }
+
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Furnitures = APIClient.GetRequest<List<FurnitureViewModel>>("api/main/getfurniturelist");
+            ViewBag.Flowers = APIClient.GetRequest<List<FurnitureViewModel>>("api/main/getflowerlist");
             return View();
         }
+
         [HttpPost]
         public void Create(int furniture, int count, decimal sum)
         {
@@ -134,11 +133,11 @@ namespace FurnitureAssemblyClientApp.Controllers
             });
             Response.Redirect("Index");
         }
+
         [HttpPost]
         public decimal Calc(decimal count, int furniture)
         {
-            FurnitureViewModel furn =
-            APIClient.GetRequest<FurnitureViewModel>($"api/main/getfurniture?furnitureId={furniture}");
+            FurnitureViewModel furn = APIClient.GetRequest<FurnitureViewModel>($"api/main/getfurniture?furnitureId={furniture}");
             return count * furn.Price;
         }
     }
