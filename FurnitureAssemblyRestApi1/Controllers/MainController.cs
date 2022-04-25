@@ -23,17 +23,14 @@ namespace FurnitureAssemblyRestApi1.Controllers
             _furniture = furniture;
         }
         [HttpGet]
-        public List<FurnitureViewModel> GetProductList() => _furniture.Read(null)?.ToList();
+        public List<FurnitureViewModel> GetFurnitureList() => _furniture.Read(null)?.ToList();
         [HttpGet]
-        public FurnitureViewModel GetProduct(int productId) => _furniture.Read(new
-       FurnitureBindingModel
-        { Id = productId })?[0];
+        public FurnitureViewModel GetFurniture(int productId) => _furniture.Read(new FurnitureBindingModel{ Id = productId })?[0];
         [HttpGet]
         public List<OrderViewModel> GetOrders(int clientId) => _order.Read(new
        OrderBindingModel
         { ClientId = clientId });
         [HttpPost]
-        public void CreateOrder(CreateOrderBindingModel model) =>
-       _order.CreateOrder(model);
+        public void CreateOrder(CreateOrderBindingModel model) =>_order.CreateOrder(model);
     }
 }

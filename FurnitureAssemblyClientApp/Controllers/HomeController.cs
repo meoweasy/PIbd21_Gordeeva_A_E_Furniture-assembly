@@ -65,8 +65,7 @@ namespace FurnitureAssemblyClientApp.Controllers
         {
             return View(new ErrorViewModel
             {
-                RequestId = Activity.Current?.Id ??
-            HttpContext.TraceIdentifier
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
             });
         }
         [HttpGet]

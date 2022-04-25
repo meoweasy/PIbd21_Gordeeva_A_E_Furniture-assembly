@@ -89,7 +89,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             _saveToWord.CreateDoc(new WordInfo
             {
                 FileName = model.FileName,
-                Title = "Список деталей",
+                Title = "Список изделий",
                 Furnitures = _furnitureStorage.GetFullList()
             });
         }
@@ -102,7 +102,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             _saveToExcel.CreateReport(new ExcelInfo
             {
                 FileName = model.FileName,
-                Title = "Список изделий",
+                Title = "Список деталей",
                 FurnitureDetails = GetFurnitureDetail()
             });
         }

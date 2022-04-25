@@ -44,7 +44,7 @@ namespace FurnitureAssemblyRestApi1
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title =
-                "AbstractShopRestApi",
+                "FurnitureAssemblyRestApi1",
                     Version = "v1"
                 });
             });

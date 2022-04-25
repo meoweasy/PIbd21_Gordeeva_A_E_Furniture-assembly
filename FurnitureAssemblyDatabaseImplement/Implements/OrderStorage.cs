@@ -40,8 +40,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             }
             using var context = new FurnitureAssemblyDatabase();
             var order = context.Orders
-            .FirstOrDefault(rec => rec.FurnitureId == model.FurnitureId || rec.Id
-           == model.Id);
+            .FirstOrDefault(rec => rec.Id == model.Id);
             return order != null ? CreateModel(order) : null;
         }
         public void Insert(OrderBindingModel model)
