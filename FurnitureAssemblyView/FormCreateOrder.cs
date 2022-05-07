@@ -62,10 +62,7 @@ namespace FurnitureAssemblyView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxFurniture.SelectedValue);
-                    FurnitureViewModel furniture = _logicP.Read(new FurnitureBindingModel
-                    {
-                        Id = id
-                    })?[0];
+                    FurnitureViewModel furniture = _logicP.Read(new FurnitureBindingModel{Id = id})?[0];
                     int count = Convert.ToInt32(textBoxCount.Text);
                     textBoxSum.Text = (count * furniture?.Price ?? 0).ToString();
                 }
@@ -131,7 +128,5 @@ namespace FurnitureAssemblyView
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
-        
     }
 }
