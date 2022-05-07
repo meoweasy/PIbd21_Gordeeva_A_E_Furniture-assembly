@@ -37,9 +37,7 @@ namespace FurnitureAssemblyView
                 {
                     FurnitureViewModel view = _logic.Read(new FurnitureBindingModel
                     {
-                        Id =
-                   id.Value
-                    })?[0];
+                        Id = id.Value})?[0];
                     if (view != null)
                     {
                         textBoxName.Text = view.FurnitureName;
@@ -69,8 +67,7 @@ namespace FurnitureAssemblyView
                     dataGridView.Rows.Clear();
                     foreach (var pc in FurnitureDetails)
                     {
-                        dataGridView.Rows.Add(new object[] { pc.Key, pc.Value.Item1,
-pc.Value.Item2 });
+                        dataGridView.Rows.Add(new object[] { pc.Key, pc.Value.Item1, pc.Value.Item2 });
                     }
                 }
             }

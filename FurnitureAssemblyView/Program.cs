@@ -9,6 +9,8 @@ using FurnitureAssemblyBusinessLogic.BusinessLogics;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
 using FurnitureAssemblyContracts.StoragesContacts;
 using FurnitureAssemblyDatabaseImplement.Implements;
+using FurnitureAssemblyBusinessLogic.OfficePackage;
+using FurnitureAssemblyBusinessLogic.OfficePackage.Implements;
 
 
 namespace FurnitureAssemblyView
@@ -42,8 +44,8 @@ namespace FurnitureAssemblyView
         private static IUnityContainer BuildUnityContainer()
         {
             var currentContainer = new UnityContainer();
-            currentContainer.RegisterType<IDetailStorage,
-            DetailStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IDetailStorage,DetailStorage>(new
+            HierarchicalLifetimeManager());
             currentContainer.RegisterType<IOrderStorage, OrderStorage>(new
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IFurnitureStorage, FurnitureStorage>(new
@@ -51,8 +53,16 @@ namespace FurnitureAssemblyView
             currentContainer.RegisterType<IDetailLogic, DetailLogic>(new
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IOrderLogic, OrderLogic>(new
-            HierarchicalLifetimeManager());
+           HierarchicalLifetimeManager());
             currentContainer.RegisterType<IFurnitureLogic, FurnitureLogic>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IReportLogic, ReportLogic>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<FurnitureSaveToExcel,SaveToExcel>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<FurnitureSaveToPdf, SaveToPdf>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<FurnitureSaveToWord, SaveToWord>(new
             HierarchicalLifetimeManager());
             return currentContainer;
         }

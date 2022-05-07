@@ -11,6 +11,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.16" />
     <PackageReference Include="Unity" Version="5.11.9" />
   </ItemGroup>
 
@@ -18,6 +19,12 @@
     <ProjectReference Include="..\FurnitureAssemblyDatabaseImplement\FurnitureAssemblyDatabaseImplement.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyFileImplement\FurnitureAssemblyFileImplement.csproj" />
     <ProjectReference Include="D:\VSпроекты\FurnitureAssembly\FurnitureAssemblyBusinessLogic\FurnitureAssemblyBusinessLogic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ReportOrders.rdlc">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

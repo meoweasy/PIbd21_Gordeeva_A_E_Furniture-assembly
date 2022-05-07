@@ -36,7 +36,7 @@ namespace FurnitureAssemblyListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (order.FurnitureId == model.FurnitureId)
+                if (order.FurnitureId == model.FurnitureId && !model.DateFrom.HasValue && !model.DateTo.HasValue && order.DateCreate.Date == model.DateCreate.Date)
                 {
                     result.Add(CreateModel(order));
                 }

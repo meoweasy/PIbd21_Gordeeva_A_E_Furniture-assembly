@@ -26,7 +26,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             }
             using var context = new FurnitureAssemblyDatabase();
             return context.Orders
-            .Where(rec => rec.FurnitureId == model.FurnitureId)
+            .Where(rec => rec.FurnitureId == model.FurnitureId || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
             .Select(CreateModel)
             .ToList();
         }
