@@ -140,5 +140,11 @@ namespace FurnitureAssemblyClientApp.Controllers
             FurnitureViewModel furn = APIClient.GetRequest<FurnitureViewModel>($"api/Main/GetFurniture?productId={furniture}");
             return count * furn.Price;
         }
+        [HttpGet]
+        public IActionResult MessageInfo()
+        {
+            ViewBag.MessagesInfo = APIClient.GetRequest<List<MessageInfoViewModel>>($"api/Client/GetClientsMessagesInfo?clientId={Program.Client.Id}");
+            return View();
+        }
     }
 }
