@@ -130,13 +130,24 @@ namespace FurnitureAssemblyListImplement.Implements
                     break;
                 }
             }
+            string implementerFIO = null;
+            foreach (Implementer implementer in source.Implementers)
+            {
+                if (order.ImplementerId == implementer.Id && order.ImplementerId > 0)
+                {
+                    implementerFIO = implementer.ImplementerFIO;
+                    break;
+                }
+            }
             return new OrderViewModel
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
                 ClientId = order.ClientId,
+                ImplementerId = order.ImplementerId,
                 ClientFIO = clientFIO,
                 FurnitureName = order.FurnitureName,
+                ImplementerFIO = implementerFIO,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = order.Status.ToString(),

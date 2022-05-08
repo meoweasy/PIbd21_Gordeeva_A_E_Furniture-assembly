@@ -14,10 +14,16 @@ namespace FurnitureAssemblyDatabaseImplement
             }
             base.OnConfiguring(optionsBuilder);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>().Property(m => m.ImplementerId).IsRequired(false);
+            base.OnModelCreating(modelBuilder);
+        }
         public virtual DbSet<Detail> Details { set; get; }
         public virtual DbSet<Furniture> Furnitures { set; get; }
         public virtual DbSet<FurnitureDetail> FurnitureDetails { set; get; }
         public virtual DbSet<Order> Orders { set; get; }
         public virtual DbSet<Client> Clients { set; get; }
+        public virtual DbSet<Implementer> Implementers { set; get; }
     }
 }

@@ -17,6 +17,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             return context.Orders
             .Include(rec => rec.Furniture)
             .Include(rec => rec.Client)
+            .Include(rec => rec.Implementer)
             .ToList()
             .Select(CreateModel)
             .ToList();
@@ -31,9 +32,12 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             return context.Orders
             .Include(rec => rec.Furniture)
             .Include(rec => rec.Client)
+            .Include(rec => rec.Implementer)
             .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) ||
             (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
-            (model.ClientId.HasValue && rec.ClientId == model.ClientId))
+            (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+            (model.SearchStatus.HasValue && model.SearchStatus.Value == rec.Status) ||
+            (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && model.Status == rec.Status))
             .ToList()
             .Select(CreateModel)
             .ToList();
@@ -48,6 +52,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             var order = context.Orders
             .Include(rec => rec.Furniture)
             .Include(rec => rec.Client)
+            .Include(rec => rec.Implementer)
             .FirstOrDefault(rec => rec.Id == model.Id);
             return order != null ? CreateModel(order) : null;
         }
@@ -106,6 +111,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
         {
             order.FurnitureId = model.FurnitureId;
             order.ClientId = (int)model.ClientId;
+            order.ImplementerId = model.ImplementerId;
             order.Count = model.Count;
             order.Sum = model.Sum;
             order.Status = model.Status;
@@ -122,10 +128,12 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                 ClientId = order.ClientId,
                 ClientFIO = order.Client.ClientFIO,
                 FurnitureId = order.FurnitureId,
-                FurnitureName = context.Furnitures.FirstOrDefault(t => t.Id == order.FurnitureId)?.FurnitureName,
+                FurnitureName = order.Furniture.FurnitureName,
+                ImplementerId = order.ImplementerId,
+                ImplementerFIO = order.Implementer?.ImplementerFIO,
                 Count = order.Count,
                 Sum = order.Sum,
-                Status = Convert.ToString(order.Status),
+                Status = Enum.GetName(order.Status),
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement
             };

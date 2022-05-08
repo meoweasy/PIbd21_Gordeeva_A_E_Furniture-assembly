@@ -61,9 +61,9 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             _orderStorage.Update(new OrderBindingModel
             {
                 Id = order.Id,
-                FurnitureId = order.FurnitureId,
                 ClientId = order.ClientId,
-                FurnitureName = order.FurnitureName,
+                FurnitureId = order.FurnitureId,
+                ImplementerId = model.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
@@ -90,7 +90,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
                 ClientId = order.ClientId,
-                FurnitureName = order.FurnitureName,
+                ImplementerId = order.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,

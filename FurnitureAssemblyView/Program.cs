@@ -51,8 +51,10 @@ namespace FurnitureAssemblyView
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IFurnitureStorage, FurnitureStorage>(new
             HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IClientStorage, ClientStorage>(new HierarchicalLifetimeManager());
-            
+            currentContainer.RegisterType<IClientStorage, ClientStorage>(new 
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IImplementerStorage, ImplementerStorage>(new 
+            HierarchicalLifetimeManager());
             currentContainer.RegisterType<IDetailLogic, DetailLogic>(new
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IOrderLogic, OrderLogic>(new
@@ -61,14 +63,17 @@ namespace FurnitureAssemblyView
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IReportLogic, ReportLogic>(new
             HierarchicalLifetimeManager());
-
-            currentContainer.RegisterType<IClientLogic, ClientLogic>(new HierarchicalLifetimeManager());
-            
+            currentContainer.RegisterType<IClientLogic, ClientLogic>(new 
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IImplementerLogic, ImplementerLogic>(new
+            HierarchicalLifetimeManager());
             currentContainer.RegisterType<FurnitureSaveToExcel,SaveToExcel>(new
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<FurnitureSaveToPdf, SaveToPdf>(new
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<FurnitureSaveToWord, SaveToWord>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IWorkProcess, WorkModeling>(new
             HierarchicalLifetimeManager());
             return currentContainer;
         }
