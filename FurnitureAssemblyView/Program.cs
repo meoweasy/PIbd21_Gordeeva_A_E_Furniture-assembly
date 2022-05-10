@@ -54,7 +54,7 @@ namespace FurnitureAssemblyView
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(Container.Resolve<FormMain>());
         }
-
+        private static void MailCheck(object obj) => Container.Resolve<AbstractMailWorker>().MailCheck();
         private static IUnityContainer BuildUnityContainer()
         {
             var currentContainer = new UnityContainer();
@@ -100,7 +100,7 @@ namespace FurnitureAssemblyView
             SingletonLifetimeManager());
             return currentContainer;
         }
-        private static void MailCheck(object obj) => Container.Resolve<AbstractMailWorker>().MailCheck();
+        
         public static void ConfigGrid<T>(List<T> data, DataGridView grid)
         {
             var type = typeof(T);

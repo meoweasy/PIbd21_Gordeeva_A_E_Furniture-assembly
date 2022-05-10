@@ -15,7 +15,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
         public List<MessageInfoViewModel> GetFullList()
         {
             using var context = new FurnitureAssemblyDatabase();
-            return context.MessagesInfo
+            return context.Messages
             .Select(rec => new MessageInfoViewModel
             {
                 MessageId = rec.MessageId,
@@ -33,7 +33,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                 return null;
             }
             using var context = new FurnitureAssemblyDatabase();
-            return context.MessagesInfo
+            return context.Messages
             .Where(rec => (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
             (!model.ClientId.HasValue && rec.DateDelivery.Date == model.DateDelivery.Date))
             .Select(rec => new MessageInfoViewModel
@@ -49,12 +49,12 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
         public void Insert(MessageInfoBindingModel model)
         {
             using var context = new FurnitureAssemblyDatabase();
-            MessageInfo element = context.MessagesInfo.FirstOrDefault(rec => rec.MessageId == model.MessageId);
+            MessageInfo element = context.Messages.FirstOrDefault(rec => rec.MessageId == model.MessageId);
             if (element != null)
             {
                 throw new Exception("Уже есть письмо с таким идентификатором");
             }
-            context.MessagesInfo.Add(new MessageInfo
+            context.Messages.Add(new MessageInfo
             {
                 MessageId = model.MessageId,
                 ClientId = model.ClientId,
