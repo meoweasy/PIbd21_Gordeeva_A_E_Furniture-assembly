@@ -3,35 +3,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel;
+using System.Runtime.Serialization;
+using FurnitureAssemblyContracts.Attributes;
 
 namespace FurnitureAssemblyContracts.ViewModels
 {
     /// <summary>
     /// Заказ
     /// </summary>
+    [DataContract]
     public class OrderViewModel
     {
+        [Column(title: "Номер", width: 100)]
         public int Id { get; set; }
-        public int FurnitureId { get; set; }
-        public int ClientId { get; set; }
-        public int? ImplementerId { get; set; }
 
-        [DisplayName("Клиент")]
+        [DataMember]
+        public int FurnitureId { get; set; }
+        
+        [DataMember]
+        public int ClientId { get; set; }
+        
+        [DataMember]
+        public int? ImplementerId { get; set; }
+        
+        [DataMember]
+        [Column(title: "Клиент", width: 150)]
         public string ClientFIO { get; set; }
-        [DisplayName("Изделие")]
+
+        [DataMember]
+        [Column(title: "Изделие", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string FurnitureName { get; set; }
-        [DisplayName("Количество")]
+
+        [DataMember]
+        [Column(title: "Количество", width: 100)]
         public int Count { get; set; }
-        [DisplayName("Сумма")]
+
+        [DataMember]
+        [Column(title: "Сумма", width: 50)]
         public decimal Sum { get; set; }
-        [DisplayName("Исполнитель")]
+
+        [DataMember]
+        [Column(title: "Исполнитель", width: 150)]
         public string ImplementerFIO { get; set; }
-        [DisplayName("Статус")]
+
+        [DataMember]
+        [Column(title: "Статус", width: 100)]
         public string Status { get; set; }
-        [DisplayName("Дата создания")]
+
+        [DataMember]
+        [Column(title: "Дата создания", width: 100)]
         public DateTime DateCreate { get; set; }
-        [DisplayName("Дата выполнения")]
+
+        [DataMember]
+        [Column(title: "Дата выполнения", width: 100)]
         public DateTime? DateImplement { get; set; }
     }
 }
