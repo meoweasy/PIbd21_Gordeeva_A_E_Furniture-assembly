@@ -122,6 +122,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
                 FurnitureId = order.FurnitureId,
                 ClientId = order.ClientId,
                 FurnitureName = order.FurnitureName,
+                ImplementerId = order.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,

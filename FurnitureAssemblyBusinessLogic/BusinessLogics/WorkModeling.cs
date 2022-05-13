@@ -43,7 +43,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             foreach (var order in runOrders)
             {
                 // делаем работу заново
-                Thread.Sleep(implementer.WorkingTime * rnd.Next(1, 5) * order.Count);
+                Thread.Sleep(implementer.WorkingTime * rnd.Next(1, 5) * order.Count * 1000);
                 _orderLogic.FinishOrder(new ChangeStatusBindingModel
                 {
                     OrderId = order.Id
@@ -60,8 +60,8 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
                         // пытаемся назначить заказ на исполнителя
                         _orderLogic.TakeOrderInWork(new ChangeStatusBindingModel { OrderId = order.Id, ImplementerId = implementer.Id });
                         // делаем работу
-                        Thread.Sleep(implementer.WorkingTime * rnd.Next(1, 5) * order.Count);
-                        _orderLogic.FinishOrder(new ChangeStatusBindingModel { OrderId = order.Id });
+                        Thread.Sleep(implementer.WorkingTime * rnd.Next(1, 5) * order.Count * 1000);
+                        _orderLogic.FinishOrder(new ChangeStatusBindingModel { OrderId = order.Id, ImplementerId = implementer.Id });
                         // отдыхаем
                         Thread.Sleep(implementer.PauseTime);
                     }
