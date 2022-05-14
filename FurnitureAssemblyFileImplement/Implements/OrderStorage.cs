@@ -78,6 +78,7 @@ namespace FurnitureAssemblyFileImplement.Implements
         {
             order.FurnitureId = model.FurnitureId;
             order.ClientId = (int)model.ClientId;
+            order.ImplementerId = (int)model.ImplementerId;
             order.Count = model.Count;
             order.Sum = model.Sum;
             order.Status = model.Status;
@@ -94,6 +95,7 @@ namespace FurnitureAssemblyFileImplement.Implements
                 ClientFIO = source.Clients.FirstOrDefault(clientFIO => clientFIO.Id == order.ClientId)?.ClientFIO,
                 FurnitureId = order.FurnitureId,
                 FurnitureName = source.Furnitures.FirstOrDefault(t => t.Id == order.FurnitureId)?.FurnitureName,
+                ImplementerFIO = source.Implementers.FirstOrDefault(implementerFIO => implementerFIO.Id == order.ImplementerId)?.ImplementerFIO,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = Convert.ToString(order.Status),
