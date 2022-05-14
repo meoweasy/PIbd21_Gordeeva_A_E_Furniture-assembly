@@ -17,24 +17,34 @@ namespace FurnitureAssemblyView
     {
         private readonly IFurnitureLogic _logicP;
         private readonly IOrderLogic _logicO;
-        public FormCreateOrder(IFurnitureLogic logicP, IOrderLogic logicO)
+        private readonly IClientLogic _logicC;
+        public FormCreateOrder(IFurnitureLogic logicP, IOrderLogic logicO, IClientLogic logicC)
         {
             InitializeComponent();
             _logicP = logicP;
             _logicO = logicO;
+            _logicC = logicC;
         }
 
         private void FormCreateOrder_Load(object sender, EventArgs e)
         {
             try
             {
-                List<FurnitureViewModel> list = _logicP.Read(null);
-                if (list != null)
+                List<FurnitureViewModel> listF = _logicP.Read(null);
+                if (listF != null)
                 {
                     comboBoxFurniture.DisplayMember = "FurnitureName";
                     comboBoxFurniture.ValueMember = "Id";
-                    comboBoxFurniture.DataSource = list;
+                    comboBoxFurniture.DataSource = listF;
                     comboBoxFurniture.SelectedItem = null;
+                }
+                List<ClientViewModel> listC = _logicC.Read(null);
+                if (listC != null)
+                {
+                    comboBoxClient.DisplayMember = "ClientFIO";
+                    comboBoxClient.ValueMember = "Id";
+                    comboBoxClient.DataSource = listC;
+                    comboBoxClient.SelectedItem = null;
                 }
             }
             catch (Exception ex)
@@ -52,10 +62,7 @@ namespace FurnitureAssemblyView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxFurniture.SelectedValue);
-                    FurnitureViewModel furniture = _logicP.Read(new FurnitureBindingModel
-                    {
-                        Id = id
-                    })?[0];
+                    FurnitureViewModel furniture = _logicP.Read(new FurnitureBindingModel{Id = id})?[0];
                     int count = Convert.ToInt32(textBoxCount.Text);
                     textBoxSum.Text = (count * furniture?.Price ?? 0).ToString();
                 }
@@ -90,12 +97,17 @@ namespace FurnitureAssemblyView
                MessageBoxIcon.Error);
                 return;
             }
+            if (comboBoxClient.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите клиента", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 _logicO.CreateOrder(new CreateOrderBindingModel
                 {
+                    ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
                     FurnitureId = Convert.ToInt32(comboBoxFurniture.SelectedValue),
-                    FurnitureName = comboBoxFurniture.Text,
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Sum = Convert.ToDecimal(textBoxSum.Text)
                 });
@@ -116,7 +128,5 @@ namespace FurnitureAssemblyView
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
-        
     }
 }

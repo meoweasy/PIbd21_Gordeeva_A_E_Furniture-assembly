@@ -42,15 +42,14 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FurnitureId = table.Column<int>(type: "int", nullable: false),
                     DetailId = table.Column<int>(type: "int", nullable: false),
-                    Count = table.Column<int>(type: "int", nullable: false),
-                    DetailtId = table.Column<int>(type: "int", nullable: true)
+                    Count = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FurnitureDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FurnitureDetails_Details_DetailtId",
-                        column: x => x.DetailtId,
+                        name: "FK_FurnitureDetails_Details_DetailId",
+                        column: x => x.DetailId,
                         principalTable: "Details",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);

@@ -13,6 +13,7 @@ namespace FurnitureAssemblyContracts.BindingModels
     public class CreateOrderBindingModel
     {
         public int FurnitureId { get; set; }
+        public int? ClientId { get; set; }
         public string FurnitureName { get; set; }
         public int Count { get; set; }
         public decimal Sum { get; set; }

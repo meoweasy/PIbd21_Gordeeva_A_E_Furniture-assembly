@@ -35,6 +35,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             _orderStorage.Insert(new OrderBindingModel
             {
                 FurnitureId = model.FurnitureId,
+                ClientId = model.ClientId,
                 FurnitureName = model.FurnitureName,
                 Count = model.Count,
                 Sum = model.Sum,
@@ -47,8 +48,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
         {
             var order = _orderStorage.GetElement(new OrderBindingModel
             {
-                Id =
-           model.OrderId
+                Id =  model.OrderId
             });
             if (order == null)
             {
@@ -62,6 +62,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                ClientId = order.ClientId,
                 FurnitureName = order.FurnitureName,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -88,6 +89,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                ClientId = order.ClientId,
                 FurnitureName = order.FurnitureName,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -118,6 +120,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                ClientId = order.ClientId,
                 FurnitureName = order.FurnitureName,
                 Count = order.Count,
                 Sum = order.Sum,

@@ -19,6 +19,30 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                 .HasAnnotation("ProductVersion", "5.0.15")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClientFIO")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
+                });
+
             modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Detail", b =>
                 {
                     b.Property<int>("Id")
@@ -67,15 +91,12 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                     b.Property<int>("DetailId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DetailtId")
-                        .HasColumnType("int");
-
                     b.Property<int>("FurnitureId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DetailtId");
+                    b.HasIndex("DetailId");
 
                     b.HasIndex("FurnitureId");
 
@@ -88,6 +109,9 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Count")
                         .HasColumnType("int");
@@ -109,6 +133,8 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.HasIndex("FurnitureId");
 
                     b.ToTable("Orders");
@@ -118,7 +144,9 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                 {
                     b.HasOne("FurnitureAssemblyDatabaseImplement.Models.Detail", "Detail")
                         .WithMany("FurnitureDetails")
-                        .HasForeignKey("DetailtId");
+                        .HasForeignKey("DetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FurnitureAssemblyDatabaseImplement.Models.Furniture", "Furniture")
                         .WithMany("FurnitureDetails")
@@ -133,11 +161,24 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
 
             modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Order", b =>
                 {
+                    b.HasOne("FurnitureAssemblyDatabaseImplement.Models.Client", "Client")
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("FurnitureAssemblyDatabaseImplement.Models.Furniture", null)
                         .WithMany("Orders")
                         .HasForeignKey("FurnitureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Client", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Detail", b =>
