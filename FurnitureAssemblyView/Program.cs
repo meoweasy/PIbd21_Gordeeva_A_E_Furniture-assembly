@@ -47,7 +47,7 @@ namespace FurnitureAssemblyView
                 PopHost = ConfigurationManager.AppSettings["PopHost"],
                 PopPort = Convert.ToInt32(ConfigurationManager.AppSettings["PopPort"])
             });
-            var timer = new System.Threading.Timer(new System.Threading.TimerCallback(MailCheck), null, 0, 200);
+            var timer = new System.Threading.Timer(new System.Threading.TimerCallback(MailCheck), null, 0, 1000);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(Container.Resolve<FormMain>());
