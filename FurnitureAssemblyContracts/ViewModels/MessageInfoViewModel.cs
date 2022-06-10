@@ -15,7 +15,7 @@ namespace FurnitureAssemblyContracts.ViewModels
         [Column(title: "Отправитель", width: 100)]
         public string SenderName { get; set; }
 
-        [Column(title: "Дата письма", width: 50)]
+        [Column(title: "Дата письма", width: 150)]
         public DateTime DateDelivery { get; set; }
 
         [Column(title: "Заголовок", width: 150)]

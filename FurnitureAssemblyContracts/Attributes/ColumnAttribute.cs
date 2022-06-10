@@ -10,7 +10,7 @@ namespace FurnitureAssemblyContracts.Attributes
     public class ColumnAttribute : Attribute
     {
         public ColumnAttribute(string title = "", bool visible = true, int width = 0,
-GridViewAutoSize gridViewAutoSize = GridViewAutoSize.None)
+                                GridViewAutoSize gridViewAutoSize = GridViewAutoSize.None)
         {
             Title = title;
             Visible = visible;

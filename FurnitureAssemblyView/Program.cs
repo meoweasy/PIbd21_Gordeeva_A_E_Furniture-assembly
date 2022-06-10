@@ -14,6 +14,7 @@ using FurnitureAssemblyBusinessLogic.MailWorker;
 using System.Configuration;
 using FurnitureAssemblyContracts.Attributes;
 using System.Collections.Generic;
+using FurnitureAssemblyContracts.ViewModels;
 
 
 namespace FurnitureAssemblyView
@@ -49,7 +50,7 @@ namespace FurnitureAssemblyView
                 PopHost = ConfigurationManager.AppSettings["PopHost"],
                 PopPort = Convert.ToInt32(ConfigurationManager.AppSettings["PopPort"])
             });
-            var timer = new System.Threading.Timer(new System.Threading.TimerCallback(MailCheck), null, 0, 100000);
+            var timer = new System.Threading.Timer(new System.Threading.TimerCallback(MailCheck), null, 0, 300000);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(Container.Resolve<FormMain>());
@@ -100,7 +101,7 @@ namespace FurnitureAssemblyView
             SingletonLifetimeManager());
             return currentContainer;
         }
-        
+
         public static void ConfigGrid<T>(List<T> data, DataGridView grid)
         {
             var type = typeof(T);
@@ -108,14 +109,11 @@ namespace FurnitureAssemblyView
             grid.Columns.Clear();
             foreach (var prop in type.GetProperties())
             {
-                // получаем список атрибутов
-                var attributes =
-                prop.GetCustomAttributes(typeof(ColumnAttribute), true);
+                var attributes = prop.GetCustomAttributes(typeof(ColumnAttribute), true);
                 if (attributes != null && attributes.Length > 0)
                 {
                     foreach (var attr in attributes)
                     {
-                        // ищем нужный нам атрибут
                         if (attr is ColumnAttribute columnAttr)
                         {
                             config.Add(prop.Name);
@@ -129,23 +127,24 @@ namespace FurnitureAssemblyView
                             };
                             if (columnAttr.GridViewAutoSize != GridViewAutoSize.None)
                             {
-                                column.AutoSizeMode =
-(DataGridViewAutoSizeColumnMode)Enum.Parse(typeof(DataGridViewAutoSizeColumnMode),
-columnAttr.GridViewAutoSize.ToString());
+                                column.AutoSizeMode = (DataGridViewAutoSizeColumnMode)Enum.Parse(typeof(DataGridViewAutoSizeColumnMode),
+                                columnAttr.GridViewAutoSize.ToString());
                             }
                             grid.Columns.Add(column);
                         }
                     }
                 }
             }
-            // добавляем строки
             foreach (var elem in data)
             {
                 var objs = new List<object>();
                 foreach (var conf in config)
                 {
-                    var value =
-                    elem.GetType().GetProperty(conf).GetValue(elem);
+                    var value = elem.GetType().GetProperty(conf).GetValue(elem);
+                    if (value is Dictionary<int, (string, int)>)
+                    {
+                        objs.Add(((FurnitureViewModel)(object)elem).GetComponents());
+                    }
                     objs.Add(value);
                 }
                 grid.Rows.Add(objs.ToArray());

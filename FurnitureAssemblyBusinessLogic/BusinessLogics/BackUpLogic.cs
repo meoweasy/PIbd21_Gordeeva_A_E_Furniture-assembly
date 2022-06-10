@@ -10,6 +10,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Runtime.Serialization.Json;
+using System.Xml.Serialization;
 
 namespace FurnitureAssemblyBusinessLogic.BusinessLogics
 {
@@ -45,13 +46,12 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
                 Assembly assem = _backUpInfo.GetAssembly();
                 // вытаскиваем список классов для сохранения
                 var dbsets = _backUpInfo.GetFullList();
-                // берем метод для сохранения (из базвого абстрактного класса)
-                MethodInfo method = GetType().BaseType.GetTypeInfo().GetDeclaredMethod("SaveToFile");
+                // берем метод для сохранения (из базового абстрактного класса)
+                MethodInfo method = GetType().GetTypeInfo().GetDeclaredMethod("SaveToFile");
                 foreach (var set in dbsets)
                 {
                     // создаем объект из класса для сохранения
-                    var elem =
-                    assem.CreateInstance(set.PropertyType.GenericTypeArguments[0].FullName);
+                    var elem = assem.CreateInstance(set.PropertyType.GenericTypeArguments[0].FullName);
                     // генерируем метод, исходя из класса
                     MethodInfo generic = method.MakeGenericMethod(elem.GetType());
                     // вызываем метод на выполнение
@@ -62,9 +62,9 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
                 // удаляем папку
                 dirInfo.Delete(true);
             }
-            catch(Exception)
+            catch (Exception)
             {
-                //делаем проброс
+                // делаем проброс
                 throw;
             }
         }
@@ -72,10 +72,9 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
         {
             var records = _backUpInfo.GetList<T>();
             var obj = new T();
-            var jsonFormatter = new DataContractJsonSerializer(typeof(List<T>));
-            using var fs = new FileStream(string.Format("{0}/{1}.json",
-            folderName, obj.GetType().Name), FileMode.OpenOrCreate);
-            jsonFormatter.WriteObject(fs, records);
+            XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
+            using var fs = new FileStream(string.Format("{0}/{1}.xml", folderName, obj.GetType().Name), FileMode.OpenOrCreate);
+            serializer.Serialize(fs, records);
         }
     }
 }

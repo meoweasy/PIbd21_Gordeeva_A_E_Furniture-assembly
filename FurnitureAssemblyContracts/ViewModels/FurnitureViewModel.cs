@@ -11,22 +11,29 @@ namespace FurnitureAssemblyContracts.ViewModels
     /// <summary>
     /// Мебель, изготавливаемая в магазине
     /// </summary>
-    [DataContract]
     public class FurnitureViewModel
     {
-        [DataMember]
         [Column(title: "Номер", width: 100)]
         public int Id { get; set; }
 
-        [DataMember]
-        [Column(title: "Название изделия", gridViewAutoSize: GridViewAutoSize.Fill)]
+        [Column(title: "Название изделия")]
         public string FurnitureName { get; set; }
 
-        [DataMember]
         [Column(title: "Цена", width: 50)]
         public decimal Price { get; set; }
 
-        [DataMember]
         public Dictionary<int, (string, int)> FurnitureDetails { get; set; }
+        public string GetComponents()
+        {
+            string stringComponents = string.Empty;
+            if (FurnitureDetails != null)
+            {
+                foreach (var component in FurnitureDetails)
+                {
+                    stringComponents += component.Value.Item1 + " = " + component.Value.Item2 + " шт.; ";
+                }
+            }
+            return stringComponents;
+        }
     }
 }
