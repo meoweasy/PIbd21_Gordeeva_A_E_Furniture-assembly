@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyFileImplem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyDatabaseImplement", "FurnitureAssemblyDatabaseImplement\FurnitureAssemblyDatabaseImplement.csproj", "{5027583B-0AB9-4FFF-9B56-6FBAA1274181}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureAssemblyRestApi1", "FurnitureAssemblyRestApi1\FurnitureAssemblyRestApi1.csproj", "{DFB6114B-1AF7-4F73-882D-131FE8F76B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyRestApi1", "FurnitureAssemblyRestApi1\FurnitureAssemblyRestApi1.csproj", "{DFB6114B-1AF7-4F73-882D-131FE8F76B34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureAssemblyClientApp", "FurnitureAssemblyClientApp\FurnitureAssemblyClientApp.csproj", "{4EEF96F6-4F60-4FD8-9C89-50947C28ADAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyClientApp", "FurnitureAssemblyClientApp\FurnitureAssemblyClientApp.csproj", "{4EEF96F6-4F60-4FD8-9C89-50947C28ADAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

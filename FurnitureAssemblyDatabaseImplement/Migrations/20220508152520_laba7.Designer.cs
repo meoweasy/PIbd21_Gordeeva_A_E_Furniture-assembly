@@ -4,14 +4,16 @@ using FurnitureAssemblyDatabaseImplement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FurnitureAssemblyDatabaseImplement.Migrations
 {
     [DbContext(typeof(FurnitureAssemblyDatabase))]
-    partial class FurnitureAssemblyDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20220508152520_laba7")]
+    partial class laba7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,7 +151,7 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("MessagesInfo");
                 });
 
             modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Order", b =>
