@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel;
+using System.Runtime.Serialization;
+using FurnitureAssemblyContracts.Attributes;
 
 namespace FurnitureAssemblyContracts.ViewModels
 {
@@ -12,26 +13,37 @@ namespace FurnitureAssemblyContracts.ViewModels
     /// </summary>
     public class OrderViewModel
     {
+        [Column(title: "Номер", width: 100)]
         public int Id { get; set; }
-        public int FurnitureId { get; set; }
-        public int ClientId { get; set; }
-        public int? ImplementerId { get; set; }
 
-        [DisplayName("Клиент")]
+        public int FurnitureId { get; set; }
+        
+        public int ClientId { get; set; }
+        
+        public int? ImplementerId { get; set; }
+        
+        [Column(title: "Клиент", width: 150)]
         public string ClientFIO { get; set; }
-        [DisplayName("Изделие")]
+
+        [Column(title: "Изделие", width:200)]
         public string FurnitureName { get; set; }
-        [DisplayName("Количество")]
+
+        [Column(title: "Количество", width: 100)]
         public int Count { get; set; }
-        [DisplayName("Сумма")]
+
+        [Column(title: "Сумма", width: 50)]
         public decimal Sum { get; set; }
-        [DisplayName("Исполнитель")]
+
+        [Column(title: "Исполнитель", width: 150)]
         public string ImplementerFIO { get; set; }
-        [DisplayName("Статус")]
+
+        [Column(title: "Статус", width: 100)]
         public string Status { get; set; }
-        [DisplayName("Дата создания")]
+
+        [Column(title: "Дата создания", width: 100)]
         public DateTime DateCreate { get; set; }
-        [DisplayName("Дата выполнения")]
+
+        [Column(title: "Дата выполнения", width: 100)]
         public DateTime? DateImplement { get; set; }
     }
 }

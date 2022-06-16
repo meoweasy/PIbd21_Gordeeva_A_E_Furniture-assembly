@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel;
+using FurnitureAssemblyContracts.Attributes;
 
 
 namespace FurnitureAssemblyContracts.ViewModels
@@ -13,8 +13,10 @@ namespace FurnitureAssemblyContracts.ViewModels
     /// </summary>
     public class DetailViewModel
     {
+        [Column(title: "Номер", width: 100)]
         public int Id { get; set; }
-        [DisplayName("Название компонента")]
+
+        [Column(title: "Название детали", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string DetailName { get; set; }
     }
 }
