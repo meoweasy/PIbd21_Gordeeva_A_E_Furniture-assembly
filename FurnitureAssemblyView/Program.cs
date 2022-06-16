@@ -125,7 +125,7 @@ namespace FurnitureAssemblyView
                                 Visible = columnAttr.Visible,
                                 Width = columnAttr.Width
                             };
-                            if (columnAttr.GridViewAutoSize != GridViewAutoSize.None)
+                            if (columnAttr.GridViewAutoSize !=  GridViewAutoSize.None)
                             {
                                 column.AutoSizeMode = (DataGridViewAutoSizeColumnMode)Enum.Parse(typeof(DataGridViewAutoSizeColumnMode),
                                 columnAttr.GridViewAutoSize.ToString());
